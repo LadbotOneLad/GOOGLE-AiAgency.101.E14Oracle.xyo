@@ -1,0 +1,49 @@
+{
+  "anchor_type": "time-clock",
+  "witness_timestamp": "2026-04-23T07:53:50.5144990+10:00",
+  "system_clock_at_anchor": "2026-04-23T10:46:00+10:00",
+  "cycle": 0,
+  "roothash": "c2935f7ada2c1fb990a399d1c66df1f8c9e15f4d3e0172ed133b6e7354d825d5",
+  "meta": {
+    "description": "Time-clock anchor of cycle-0 witness to local system time.",
+    "location": "Sydney/AEST",
+    "source": "sovereign-engine"
+  },
+  "repository": "https://github.com/AiTenetAgency101/atmospheric-truth-layer",
+  "version": "1.0.0-minted",
+  "status": "immutable",
+  "ledger_position": 0,
+  "signatures": {
+    "bom": "7f3e2b1a4d9c6f2e5b8a1d7c4f9e2b6a",
+    "himawari": "8g4f3c2b5e0d7g3f6c9b2e8d5g0f3c7b",
+    "goes": "9h5g4d3c6f1e8h4g7d0c3f9e6h1g4d8c",
+    "meteosat": "0i6h5e4d7g2f9i5h8e1d4g0i5h2i5e9d"
+  },
+  "system_metrics_at_anchor": {
+    "engine_365_days": {
+      "cycles_completed": 37445846,
+      "validator_health": 1.0,
+      "grid_passed": 3510223,
+      "grid_rejected": 8593985
+    },
+    "ultimate_engine": {
+      "cycles": 2548079,
+      "decisions_executed": 993625,
+      "decisions_rejected": 1554454,
+      "k_value": 0.995,
+      "byzantine_layers": 12,
+      "sovereignty_orders": 10
+    },
+    "tenetaiagency_101": {
+      "ticks": 641642364,
+      "decisions_executed": 0,
+      "decisions_rejected": 641642364,
+      "rejection_rate": 1.0,
+      "drift_ratio": 320821187.0,
+      "horizon_entries": 320821187
+    }
+  },
+  "witnessed": true,
+  "tamper_proof": true,
+  "immutable": true
+}
