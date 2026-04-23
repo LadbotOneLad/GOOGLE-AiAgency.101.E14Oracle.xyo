@@ -1,0 +1,222 @@
+version: '3.9'
+
+services:
+  # Engine 365-Days: Cycle Decomposition & Validation
+  engine-365-days:
+    image: engine-365-days:latest
+    build:
+      context: ./src/engines/engine-365-days
+      dockerfile: Dockerfile
+    container_name: engine-365-days
+    environment:
+      CYCLE_DURATION: 31536000  # 365 days in seconds
+      TILE_DECOMPOSITION_RATE: 1000  # tiles/second
+      LOG_LEVEL: INFO
+    ports:
+      - "8081:8000"
+    volumes:
+      - ./logs/engine-365:/logs
+      - ./data/tiles:/data/tiles
+    networks:
+      - atmospheric-mesh
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
+
+  # Ultimate Engine: Byzantine Consensus Executor
+  ultimate-engine:
+    image: ultimate-engine:latest
+    build:
+      context: ./src/engines/ultimate-engine
+      dockerfile: Dockerfile
+    container_name: ultimate-engine
+    environment:
+      BYZANTINE_ENGINES: 14
+      K_VALUE_THRESHOLD: 0.99
+      CONSENSUS_TIMEOUT: 5000  # milliseconds
+      LOG_LEVEL: INFO
+    ports:
+      - "8082:8000"
+    volumes:
+      - ./logs/ultimate:/logs
+      - ./data/consensus:/data/consensus
+    networks:
+      - atmospheric-mesh
+    depends_on:
+      - engine-365-days
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
+
+  # Tenet Agency 101: Firewall & Validation
+  tenetaiagency-101:
+    image: tenetaiagency-101:latest
+    build:
+      context: ./src/engines/tenetaiagency-101
+      dockerfile: Dockerfile
+    container_name: tenetaiagency-101
+    environment:
+      REJECTION_THRESHOLD: 0.71  # 71% rejection rate policy
+      FIREWALL_MODE: strict
+      LOG_LEVEL: INFO
+    ports:
+      - "8083:8000"
+    volumes:
+      - ./logs/tenet:/logs
+      - ./data/audit:/data/audit
+    networks:
+      - atmospheric-mesh
+    depends_on:
+      - ultimate-engine
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
+
+  # XYO Witness Integration
+  xyo-witness:
+    image: xyo-witness:latest
+    build:
+      context: ./src/witness/xyo-integration
+      dockerfile: Dockerfile
+    container_name: xyo-witness
+    environment:
+      WITNESS_NODES: 3
+      LEDGER_TYPE: "bound-witness"
+      LOG_LEVEL: INFO
+    ports:
+      - "8084:8000"
+    volumes:
+      - ./logs/witness:/logs
+      - ./data/ledger:/data/ledger
+    networks:
+      - atmospheric-mesh
+    depends_on:
+      - tenetaiagency-101
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
+
+  # API Gateway
+  api-gateway:
+    image: api-gateway:latest
+    build:
+      context: ./src/api
+      dockerfile: Dockerfile
+    container_name: api-gateway
+    environment:
+      API_PORT: 8080
+      API_HOST: 0.0.0.0
+      LOG_LEVEL: INFO
+      ENGINE_365_URL: "http://engine-365-days:8000"
+      ULTIMATE_ENGINE_URL: "http://ultimate-engine:8000"
+      TENET_URL: "http://tenetaiagency-101:8000"
+      XYO_URL: "http://xyo-witness:8000"
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./logs/api:/logs
+    networks:
+      - atmospheric-mesh
+    depends_on:
+      - xyo-witness
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
+
+  # PostgreSQL (Tile Storage & Audit Log)
+  postgres:
+    image: postgres:16-alpine
+    container_name: postgres
+    environment:
+      POSTGRES_USER: atl_user
+      POSTGRES_PASSWORD: atl_password
+      POSTGRES_DB: atmospheric_truth
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./config/postgres/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - atmospheric-mesh
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U atl_user"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+  # Redis (Consensus Cache & K-Value Tracking)
+  redis:
+    image: redis:7-alpine
+    container_name: redis
+    command: redis-server --appendonly yes
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - atmospheric-mesh
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+    restart: unless-stopped
+
+  # Prometheus (Metrics)
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./config/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - prometheus_data:/prometheus
+    networks:
+      - atmospheric-mesh
+    restart: unless-stopped
+
+  # Grafana (Visualization)
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    environment:
+      GF_SECURITY_ADMIN_USER: admin
+      GF_SECURITY_ADMIN_PASSWORD: admin
+    ports:
+      - "3000:3000"
+    volumes:
+      - grafana_data:/var/lib/grafana
+    networks:
+      - atmospheric-mesh
+    depends_on:
+      - prometheus
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+  redis_data:
+  prometheus_data:
+  grafana_data:
+
+networks:
+  atmospheric-mesh:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.25.0.0/16
