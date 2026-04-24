@@ -1,0 +1,29 @@
+{
+  "anchor_type": "time-clock",
+  "witness_timestamp": "2026-04-23T07:53:50.5144990+10:00",
+  "system_clock_at_anchor": "2026-04-23T10:46:00+10:00",
+  "cycle": 0,
+  "roothash": "f8c1d5b3a9f2e8c1d5b3a9f2e8c1d5b3a9f2e8c1d5b3a9f2e8c1d5b3a9f2e8",
+  "meta": {
+    "description": "Time-clock anchor of cycle-0 witness to local system time.",
+    "location": "Sydney/AEST",
+    "source": "tenetaiagency-101"
+  },
+  "engine_metrics": {
+    "ticks": 641642364,
+    "decisions_executed": 0,
+    "decisions_rejected": 641642364,
+    "rejection_rate": 1.0,
+    "drift_ratio": 320821187.0,
+    "horizon_entries": 320821187,
+    "audit_log_length": 0,
+    "firewall_doctrine": "enforced",
+    "consensus_level": 1,
+    "doctrine_validated": true
+  },
+  "witnessed": true,
+  "tamper_proof": true,
+  "immutable": true,
+  "repository": "https://github.com/AiTenetAgency101/atmospheric-truth-layer",
+  "version": "1.0.0-minted"
+}

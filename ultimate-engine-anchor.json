@@ -1,0 +1,29 @@
+{
+  "anchor_type": "time-clock",
+  "witness_timestamp": "2026-04-23T07:53:50.5144990+10:00",
+  "system_clock_at_anchor": "2026-04-23T10:46:00+10:00",
+  "cycle": 0,
+  "roothash": "a7f4e8c1d5b3a9f2e8c1d5b3a9f2e8c1d5b3a9f2e8c1d5b3a9f2e8c1d5b3a9f",
+  "meta": {
+    "description": "Time-clock anchor of cycle-0 witness to local system time.",
+    "location": "Sydney/AEST",
+    "source": "ultimate-engine"
+  },
+  "engine_metrics": {
+    "cycles": 2548079,
+    "decisions_executed": 993625,
+    "decisions_rejected": 1554454,
+    "execution_rate": 0.3899506255496788,
+    "rejection_rate": 0.6100493744503213,
+    "audit_trail_size": 100000,
+    "sovereignty_orders": 10,
+    "byzantine_layers": 12,
+    "architecture": "TENETAIAGENCY_ULTIMATE_SOVEREIGN",
+    "k_value": 0.995
+  },
+  "witnessed": true,
+  "tamper_proof": true,
+  "immutable": true,
+  "repository": "https://github.com/AiTenetAgency101/atmospheric-truth-layer",
+  "version": "1.0.0-minted"
+}
