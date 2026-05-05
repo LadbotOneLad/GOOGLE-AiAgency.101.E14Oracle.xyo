@@ -197,9 +197,9 @@ See [CAREERS.md](CAREERS.md) for details.
 
 ## 📞 Get In Touch
 
-- **Email:** contact@aitenetagency.com
-- **GitHub:** [@AiTenetAgency101](https://github.com/AiTenetAgency101)
-- **Issues & Discussions:** [Open an issue](https://github.com/AiTenetAgency101/atmospheric-truth-layer/issues)
+- **GitHub:** [AiAgency101 Organization](https://github.com/AiAgency101)
+- **Issues & Discussions:** [Open an issue](https://github.com/AiAgency101/atmospheric-truth-layer/issues)
+- **Contact:** [GitHub Discussions](https://github.com/AiAgency101/atmospheric-truth-layer/discussions)
 
 ---
 
