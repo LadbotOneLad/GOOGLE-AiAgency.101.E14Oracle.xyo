@@ -1,17 +1,22 @@
+# Atmospheric Truth Layer - E14 Oracle
+# Architect: AiAgency101
+# Byzantine Consensus System for Witnessed Atmospheric Truth
+
 version: '3.9'
 
 services:
-  # Engine 365-Days: Cycle Decomposition & Validation
+  # Engine 365-Days (E01): Temporal Anchor & Tile Decomposition
   engine-365-days:
-    image: engine-365-days:latest
+    image: aiagency101/engine-365-days:latest
     build:
-      context: ./src/engines/engine-365-days
-      dockerfile: Dockerfile
+      context: ./src/engines
+      dockerfile: Dockerfile.engine365
     container_name: engine-365-days
     environment:
-      CYCLE_DURATION: 31536000  # 365 days in seconds
-      TILE_DECOMPOSITION_RATE: 1000  # tiles/second
+      CYCLE_DURATION: 31536000
+      TILE_DECOMPOSITION_RATE: 1000
       LOG_LEVEL: INFO
+      ARCHITECT: "AiAgency101"
     ports:
       - "8081:8000"
     volumes:
@@ -26,18 +31,19 @@ services:
       retries: 3
     restart: unless-stopped
 
-  # Ultimate Engine: Byzantine Consensus Executor
+  # Ultimate Engine (E02): Byzantine Consensus Coordinator
   ultimate-engine:
-    image: ultimate-engine:latest
+    image: aiagency101/ultimate-engine:latest
     build:
-      context: ./src/engines/ultimate-engine
-      dockerfile: Dockerfile
+      context: ./src/engines
+      dockerfile: Dockerfile.ultimate
     container_name: ultimate-engine
     environment:
       BYZANTINE_ENGINES: 14
       K_VALUE_THRESHOLD: 0.99
-      CONSENSUS_TIMEOUT: 5000  # milliseconds
+      CONSENSUS_TIMEOUT: 5000
       LOG_LEVEL: INFO
+      ARCHITECT: "AiAgency101"
     ports:
       - "8082:8000"
     volumes:
@@ -54,17 +60,18 @@ services:
       retries: 3
     restart: unless-stopped
 
-  # Tenet Agency 101: Firewall & Validation
+  # Tenet Agency 101 (E03): Firewall & Validation
   tenetaiagency-101:
-    image: tenetaiagency-101:latest
+    image: aiagency101/tenet-agency-101:latest
     build:
-      context: ./src/engines/tenetaiagency-101
-      dockerfile: Dockerfile
+      context: ./src/engines
+      dockerfile: Dockerfile.tenet
     container_name: tenetaiagency-101
     environment:
-      REJECTION_THRESHOLD: 0.71  # 71% rejection rate policy
+      REJECTION_THRESHOLD: 0.71
       FIREWALL_MODE: strict
       LOG_LEVEL: INFO
+      ARCHITECT: "AiAgency101"
     ports:
       - "8083:8000"
     volumes:
@@ -83,15 +90,16 @@ services:
 
   # XYO Witness Integration
   xyo-witness:
-    image: xyo-witness:latest
+    image: aiagency101/xyo-witness:latest
     build:
-      context: ./src/witness/xyo-integration
+      context: ./src/witness
       dockerfile: Dockerfile
     container_name: xyo-witness
     environment:
       WITNESS_NODES: 3
       LEDGER_TYPE: "bound-witness"
       LOG_LEVEL: INFO
+      ARCHITECT: "AiAgency101"
     ports:
       - "8084:8000"
     volumes:
@@ -110,7 +118,7 @@ services:
 
   # API Gateway
   api-gateway:
-    image: api-gateway:latest
+    image: aiagency101/api-gateway:latest
     build:
       context: ./src/api
       dockerfile: Dockerfile
@@ -123,6 +131,7 @@ services:
       ULTIMATE_ENGINE_URL: "http://ultimate-engine:8000"
       TENET_URL: "http://tenetaiagency-101:8000"
       XYO_URL: "http://xyo-witness:8000"
+      ARCHITECT: "AiAgency101"
     ports:
       - "8080:8080"
     volumes:
