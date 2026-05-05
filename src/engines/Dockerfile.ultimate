@@ -1,0 +1,24 @@
+# Dockerfile for Ultimate Engine (E02)
+# Architect: AiAgency101
+# Byzantine Consensus Coordinator
+
+FROM python:3.11-slim
+
+WORKDIR /app
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY requirements.ultimate.txt .
+RUN pip install --no-cache-dir -r requirements.ultimate.txt
+
+COPY src/engines/ultimate_engine.py .
+
+RUN useradd -m -u 1000 ultimate && chown -R ultimate:ultimate /app
+USER ultimate
+
+HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
+    CMD curl -f http://localhost:8000/health || exit 1
+
+CMD ["python", "ultimate_engine.py"]
