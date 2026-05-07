@@ -1,0 +1,9 @@
+{
+  "arcs": [
+    { "id": "A", "nodes": ["p1", "p2"], "engines": ["tetra", "cube"] },
+    { "id": "B", "nodes": ["p3", "p4"], "engines": ["octa"] },
+    { "id": "C", "nodes": ["p5", "p6"], "engines": ["icosa", "dodeca"] }
+  ],
+  "tick_fraction": "1/7200",
+  "order": ["A", "B", "C"]
+}
