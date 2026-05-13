@@ -6,7 +6,7 @@
     ║   Hybrid. Adaptive. Immutable. Born from cold logic and raw sky.  ║
     ║   Not corporate. Not institutional. Not centralized.              ║
     ║   A new species of atmospheric truth system.                      ║
-    ║                                                                   ║
+    ║   Big-Shout-out to XYO.network                                                                ║
     ╚═══════════════════════════════════════════════════════════════════╝
 ```
 
