@@ -1,0 +1,24 @@
+{
+  "xyo_node": "466e84dfcbfbae8d50ad4276e8f2b5d37e8834a8",
+  "engine": "yt-dlp-xyo-reality",
+  "timestamp_utc": "2026-05-19T21:05:19.049858+00:00",
+  "source": {
+    "type": "media_metadata",
+    "path": "..\\yt-dlp\\runtime\\metadata\\dQw4w9WgXcQ.info.json",
+    "hash_sha256": "c6a884094c8636876bc8d7e7019dbf0a75cf2b46af517f4017e3a8c275bc08f0"
+  },
+  "metrics": {
+    "reality_score": -0.0,
+    "states_sampled": 104,
+    "bytes_observed": 2968199
+  },
+  "context": {
+    "pipeline_run_id": "8a81c9b5-d737-4a59-9b32-15c04a638478",
+    "tags": [
+      "yt-dlp",
+      "markov",
+      "xyo",
+      "reality"
+    ]
+  }
+}
