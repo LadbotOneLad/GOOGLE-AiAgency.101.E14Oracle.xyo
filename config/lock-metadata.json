@@ -1,0 +1,190 @@
+{
+  "anchor": {
+    "lockId": "550e8400-e29b-41d4-a716-446655440000",
+    "inceptionTimestampIso": "2025-01-14T10:00:00.000Z",
+    "expiryTimestampIso": "2025-04-14T10:00:00.000Z",
+    "engineCount": 14,
+    "rootMerkleHash": "a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6a7b8c9d0e1f2",
+    "rootCoreSignature": "9c36e7c5d8b4f2a1e6c3b8d5f2a9e6c3b8d5f2a9e6c3b8d5f2a9e6c3b8d5f2",
+    "lockPhrase": "UNIT-LOCKED:14engines:90days:2025-01-14",
+    "wobbleSnapshot": {
+      "w_suu": 0.05,
+      "w_aha": 0.075,
+      "w_rere": 0.15
+    }
+  },
+  "engineStates": [
+    {
+      "id": "365",
+      "port": 365,
+      "stateHash": "a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6a7b8c9d0e1f",
+      "contextRingSize": 42,
+      "growthLedgerSize": 128,
+      "driftVector": 0.021,
+      "stateVersion": 1,
+      "parentHash": null,
+      "engineType": "validator"
+    },
+    {
+      "id": "777",
+      "port": 777,
+      "stateHash": "b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6a7b8c9d0e1f2",
+      "contextRingSize": 37,
+      "growthLedgerSize": 115,
+      "driftVector": 0.018,
+      "stateVersion": 1,
+      "parentHash": null,
+      "engineType": "sovereign"
+    },
+    {
+      "id": "101",
+      "port": 101,
+      "stateHash": "c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6a7b8c9d0e1f2g3",
+      "contextRingSize": 51,
+      "growthLedgerSize": 142,
+      "driftVector": 0.024,
+      "stateVersion": 1,
+      "parentHash": null,
+      "engineType": "horizon"
+    },
+    {
+      "id": "1001",
+      "port": 1001,
+      "stateHash": "d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6a7b8c9d0e1f2g3h4",
+      "contextRingSize": 44,
+      "growthLedgerSize": 135,
+      "driftVector": 0.019,
+      "stateVersion": 1,
+      "parentHash": null,
+      "engineType": "peer"
+    },
+    {
+      "id": "1002",
+      "port": 1002,
+      "stateHash": "e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6a7b8c9d0e1f2g3h4i5",
+      "contextRingSize": 46,
+      "growthLedgerSize": 140,
+      "driftVector": 0.022,
+      "stateVersion": 1,
+      "parentHash": null,
+      "engineType": "peer"
+    },
+    {
+      "id": "1003",
+      "port": 1003,
+      "stateHash": "f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6a7b8c9d0e1f2g3h4i5j6",
+      "contextRingSize": 41,
+      "growthLedgerSize": 125,
+      "driftVector": 0.017,
+      "stateVersion": 1,
+      "parentHash": null,
+      "engineType": "peer"
+    },
+    {
+      "id": "1004",
+      "port": 1004,
+      "stateHash": "g7h8i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6a7b8c9d0e1f2g3h4i5j6k7",
+      "contextRingSize": 48,
+      "growthLedgerSize": 145,
+      "driftVector": 0.025,
+      "stateVersion": 1,
+      "parentHash": null,
+      "engineType": "peer"
+    },
+    {
+      "id": "1005",
+      "port": 1005,
+      "stateHash": "h8i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6a7b8c9d0e1f2g3h4i5j6k7l8",
+      "contextRingSize": 43,
+      "growthLedgerSize": 132,
+      "driftVector": 0.02,
+      "stateVersion": 1,
+      "parentHash": null,
+      "engineType": "peer"
+    },
+    {
+      "id": "1006",
+      "port": 1006,
+      "stateHash": "i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6a7b8c9d0e1f2g3h4i5j6k7l8m9",
+      "contextRingSize": 39,
+      "growthLedgerSize": 118,
+      "driftVector": 0.016,
+      "stateVersion": 1,
+      "parentHash": null,
+      "engineType": "peer"
+    },
+    {
+      "id": "1007",
+      "port": 1007,
+      "stateHash": "j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6a7b8c9d0e1f2g3h4i5j6k7l8m9n0",
+      "contextRingSize": 50,
+      "growthLedgerSize": 150,
+      "driftVector": 0.027,
+      "stateVersion": 1,
+      "parentHash": null,
+      "engineType": "peer"
+    },
+    {
+      "id": "1008",
+      "port": 1008,
+      "stateHash": "k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6a7b8c9d0e1f2g3h4i5j6k7l8m9n0o1",
+      "contextRingSize": 45,
+      "growthLedgerSize": 138,
+      "driftVector": 0.023,
+      "stateVersion": 1,
+      "parentHash": null,
+      "engineType": "peer"
+    },
+    {
+      "id": "1009",
+      "port": 1009,
+      "stateHash": "l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6a7b8c9d0e1f2g3h4i5j6k7l8m9n0o1p2",
+      "contextRingSize": 47,
+      "growthLedgerSize": 143,
+      "driftVector": 0.026,
+      "stateVersion": 1,
+      "parentHash": null,
+      "engineType": "peer"
+    },
+    {
+      "id": "1010",
+      "port": 1010,
+      "stateHash": "m3n4o5p6q7r8s9t0u1v2w3x4y5z6a7b8c9d0e1f2g3h4i5j6k7l8m9n0o1p2q3",
+      "contextRingSize": 40,
+      "growthLedgerSize": 120,
+      "driftVector": 0.015,
+      "stateVersion": 1,
+      "parentHash": null,
+      "engineType": "peer"
+    },
+    {
+      "id": "1011",
+      "port": 1011,
+      "stateHash": "n4o5p6q7r8s9t0u1v2w3x4y5z6a7b8c9d0e1f2g3h4i5j6k7l8m9n0o1p2q3r4",
+      "contextRingSize": 49,
+      "growthLedgerSize": 147,
+      "driftVector": 0.028,
+      "stateVersion": 1,
+      "parentHash": null,
+      "engineType": "peer"
+    },
+    {
+      "id": "1012",
+      "port": 1012,
+      "stateHash": "o5p6q7r8s9t0u1v2w3x4y5z6a7b8c9d0e1f2g3h4i5j6k7l8m9n0o1p2q3r4s5",
+      "contextRingSize": 38,
+      "growthLedgerSize": 122,
+      "driftVector": 0.014,
+      "stateVersion": 1,
+      "parentHash": null,
+      "engineType": "peer"
+    }
+  ],
+  "verifiedAt": "2025-01-14T10:00:00.000Z",
+  "lockStrength": "critical",
+  "kotahitanja": {
+    "formula": "H = (1/3)*w_suu + (1/3)*w_aha + (1/3)*w_rere",
+    "value": 0.0917,
+    "status": "synchronized"
+  }
+}

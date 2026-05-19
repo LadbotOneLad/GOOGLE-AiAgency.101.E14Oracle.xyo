@@ -1,0 +1,248 @@
+# -*- coding: utf-8 -*- #
+# Copyright 2025 Google LLC. All Rights Reserved.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#    http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+"""Create a Cloud Run instance."""
+
+from googlecloudsdk.calliope import base
+from googlecloudsdk.calliope import exceptions as c_exceptions
+from googlecloudsdk.calliope import parser_errors as c_parser_errors
+from googlecloudsdk.command_lib.run import config_changes
+from googlecloudsdk.command_lib.run import connection_context
+from googlecloudsdk.command_lib.run import container_parser
+from googlecloudsdk.command_lib.run import exceptions
+from googlecloudsdk.command_lib.run import flags
+from googlecloudsdk.command_lib.run import messages_util
+from googlecloudsdk.command_lib.run import pretty_print
+from googlecloudsdk.command_lib.run import resource_args
+from googlecloudsdk.command_lib.run import serverless_operations
+from googlecloudsdk.command_lib.run import stages
+from googlecloudsdk.command_lib.util.concepts import concept_parsers
+from googlecloudsdk.command_lib.util.concepts import presentation_specs
+from googlecloudsdk.core import log
+from googlecloudsdk.core import properties
+from googlecloudsdk.core import resources
+from googlecloudsdk.core.console import progress_tracker
+
+
+EXAMPLE_INSTANCE_IMAGE = 'us-docker.pkg.dev/cloudrun/container/hello:latest'
+
+
+def ContainerArgGroup(release_track=base.ReleaseTrack.ALPHA):
+  """Returns an argument group with all per-container deploy args."""
+
+  help_text = """
+Container Flags
+
+  If the --container is specified the following arguments may only be specified after a --container flag.
+"""
+  group = base.ArgumentGroup(help=help_text)
+  # Verify image flag is specified in Run function for better error message.
+  group.AddArgument(
+      flags.ImageArg(image=EXAMPLE_INSTANCE_IMAGE, required=False)
+  )
+  group.AddArgument(flags.PortArg())
+  group.AddArgument(flags.MutexEnvVarsFlags(release_track=release_track))
+  group.AddArgument(flags.MemoryFlag())
+  group.AddArgument(flags.CpuFlag())
+  group.AddArgument(flags.GpuFlag())
+  group.AddArgument(flags.ArgsFlag())
+  group.AddArgument(flags.SecretsFlags())
+  group.AddArgument(flags.CommandFlag())
+  group.AddArgument(flags.DependsOnFlag())
+  group.AddArgument(flags.AddVolumeMountFlag())
+  group.AddArgument(flags.RemoveVolumeMountFlag())
+  group.AddArgument(flags.ClearVolumeMountsFlag())
+  group.AddArgument(flags.StartupProbeFlag())
+
+  return group
+
+
+@base.UniverseCompatible
+@base.RegionalEndpointsSupported
+@base.ReleaseTracks(base.ReleaseTrack.ALPHA)
+class Create(base.Command):
+  """Create a Cloud Run instance."""
+
+  detailed_help = {
+      'DESCRIPTION': (
+          """\
+          Creates a new Cloud Run instance.
+          """
+      ),
+      'EXAMPLES': (
+          """\
+          To create a new instance `my-instance` on Cloud Run:
+
+              $ {command} my-instance --image=us-docker.pkg.dev/project/image
+
+          You may also omit the instance name. Then a prompt will be displayed
+          with a suggested default value:
+
+              $ {command} --image=us-docker.pkg.dev/project/image
+          """
+      ),
+  }
+
+  @classmethod
+  def CommonArgs(cls, parser):
+    # Flags not specific to any platform
+    instance_presentation = presentation_specs.ResourcePresentationSpec(
+        'INSTANCE',
+        resource_args.GetInstanceResourceSpec(),
+        'Instance to create.',
+        required=False,
+        prefixes=False,
+    )
+    flags.AddLabelsFlag(parser)
+    flags.AddServiceAccountFlag(parser)
+    flags.AddSetCloudSQLFlag(parser)
+    flags.AddVpcConnectorArg(parser)
+    flags.AddVpcNetworkGroupFlagsForCreate(parser, resource_kind='job')
+    flags.AddEgressSettingsFlag(parser)
+    flags.AddClientNameAndVersionFlags(parser)
+    flags.AddBinAuthzPolicyFlags(parser, with_clear=False)
+    flags.AddBinAuthzBreakglassFlag(parser)
+    flags.AddCmekKeyFlag(parser, with_clear=False)
+    flags.AddSandboxArg(parser, hidden=True)
+    flags.AddGeneralAnnotationFlags(parser)
+    flags.AddVolumesFlags(parser, cls.ReleaseTrack())
+    flags.AddGpuTypeFlag(parser)
+    flags.GpuZonalRedundancyFlag(parser)
+    flags.AddIngressFlag(parser)
+    flags.AddInvokerIamCheckFlag(parser)
+    flags.AddTimeoutFlag(parser)
+
+    polling_group = parser.add_mutually_exclusive_group()
+    flags.AddAsyncFlag(polling_group)
+
+    concept_parsers.ConceptParser([instance_presentation]).AddToParser(parser)
+    # No output by default, can be overridden by --format
+    parser.display_info.AddFormat('none')
+
+  @staticmethod
+  def Args(parser):
+    Create.CommonArgs(parser)
+    container_args = ContainerArgGroup()
+    container_parser.AddContainerFlags(parser, container_args)
+
+  def Run(self, args):
+    """Deploy an Instance to Cloud Run."""
+    if flags.FlagIsExplicitlySet(args, 'containers'):
+      containers = args.containers
+      if len(containers) > 10:
+        raise c_exceptions.InvalidArgumentException(
+            '--container', 'Instances may include at most 10 containers'
+        )
+      needs_image = {
+          name: container
+          for name, container in containers.items()
+          if not container.IsSpecified('image')
+      }
+      if needs_image:
+        raise exceptions.RequiredImageArgumentException(needs_image)
+    elif not flags.FlagIsExplicitlySet(args, 'image'):
+      raise c_parser_errors.RequiredError(argument='--image')
+
+    instance_ref = args.CONCEPTS.instance.Parse()
+
+    instance_name = None
+    if instance_ref:
+      flags.ValidateResource(instance_ref)
+      parent_ref = instance_ref.Parent()
+      instance_name = instance_ref.Name()
+    else:
+      # instance_ref is None, name not provided. Build parent_ref manually.
+      project = properties.VALUES.core.project.Get(required=True)
+
+      # Construct the parent reference (namespace)
+      parent_ref = resources.REGISTRY.Create(
+          'run.namespaces', namespacesId=project
+      )
+
+    conn_context = connection_context.GetConnectionContext(
+        args, flags.Product.RUN, self.ReleaseTrack()
+    )
+    changes = flags.GetInstanceConfigurationChanges(
+        args, release_track=self.ReleaseTrack()
+    )
+    changes.append(
+        config_changes.SetLaunchStageAnnotationChange(self.ReleaseTrack())
+    )
+
+    messages_util.MaybeLogDefaultGpuTypeMessage(args, resource=None)
+    with serverless_operations.Connect(conn_context) as operations:
+      pretty_print.Info(
+          messages_util.GetStartCreateInstanceMessage(
+              conn_context, parent_ref, instance_name
+          )
+      )
+      header_msg = 'Creating instance...'
+
+      with progress_tracker.StagedProgressTracker(
+          header_msg,
+          stages.InstanceStages(),
+          failure_message='Instance failed to deploy',
+          suppress_output=args.async_,
+      ) as tracker:
+        instance = operations.CreateInstance(
+            parent_ref,
+            instance_name,
+            changes,
+            tracker,
+            asyn=args.async_,
+        )
+
+      if args.async_:
+        pretty_print.Success(
+            'Instance [{{bold}}{instance}{{reset}}] is being created '
+            'asynchronously.'.format(instance=instance.name)
+        )
+      else:
+        pretty_print.Success(
+            'Instance [{{bold}}{instance}{{reset}}] has successfully been'
+            ' created.'.format(instance=instance.name)
+        )
+        region = (
+            getattr(conn_context, 'region', None)
+            or properties.VALUES.run.region.Get()
+        )
+        release_track = self.ReleaseTrack()
+        log.status.Print(
+            '\nSee logs with: \ngcloud{release_track} run instances logs tail'
+            ' {instance} --region {region}'.format(
+                release_track=(
+                    ' {}'.format(release_track.prefix)
+                    if release_track.prefix is not None
+                    else ''
+                ),
+                instance=instance.name,
+                region=region,
+            )
+        )
+        log.status.Print(
+            '\nSSH with:\ngcloud{release_track} run instances ssh {instance}'
+            ' --region {region}'.format(
+                release_track=(
+                    ' {}'.format(release_track.prefix)
+                    if release_track.prefix is not None
+                    else ''
+                ),
+                instance=instance.name,
+                region=region,
+            )
+        )
+        if instance.urls:
+          log.status.Print('\nURL: {}'.format(instance.urls[0]))
+
+      return instance
