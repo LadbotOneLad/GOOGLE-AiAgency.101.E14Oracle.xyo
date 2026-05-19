@@ -1,0 +1,44 @@
+{
+  "components": [
+    {
+      "data": {
+        "contents_checksum": "c780b4cd0be554fd140159a1dab72c2a854ded9b7056102927a3710ba36628dd",
+        "source": "",
+        "type": "tar"
+      },
+      "dependencies": [
+        "bundled-python3",
+        "core"
+      ],
+      "details": {
+        "description": "Provides stand-alone Python 3.13 install.",
+        "display_name": "Bundled Python 3.13 (Platform Specific)"
+      },
+      "gdu_only": false,
+      "id": "bundled-python3-windows-x86_64",
+      "is_configuration": false,
+      "is_hidden": true,
+      "is_required": false,
+      "platform": {
+        "architectures": [
+          "x86_64"
+        ],
+        "operating_systems": [
+          "WINDOWS"
+        ]
+      },
+      "platform_required": false,
+      "version": {
+        "build_number": 20260501041631,
+        "version_string": "3.13.12"
+      }
+    }
+  ],
+  "revision": 20260501041631,
+  "schema_version": {
+    "no_update": false,
+    "url": "https://dl.google.com/dl/cloudsdk/channels/rapid/google-cloud-sdk.tar.gz",
+    "version": 3
+  },
+  "version": "567.0.0"
+}

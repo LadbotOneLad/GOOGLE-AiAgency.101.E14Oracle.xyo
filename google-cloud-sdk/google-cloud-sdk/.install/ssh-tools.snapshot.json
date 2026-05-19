@@ -1,0 +1,35 @@
+{
+  "components": [
+    {
+      "dependencies": [
+        "ssh-tools-windows"
+      ],
+      "details": {
+        "description": "Provides Windows command line ssh tools.",
+        "display_name": "Windows command line ssh tools"
+      },
+      "gdu_only": false,
+      "id": "ssh-tools",
+      "is_configuration": false,
+      "is_hidden": true,
+      "is_required": false,
+      "platform": {
+        "operating_systems": [
+          "WINDOWS"
+        ]
+      },
+      "platform_required": false,
+      "version": {
+        "build_number": 0,
+        "version_string": ""
+      }
+    }
+  ],
+  "revision": 20260501041631,
+  "schema_version": {
+    "no_update": false,
+    "url": "https://dl.google.com/dl/cloudsdk/channels/rapid/google-cloud-sdk.tar.gz",
+    "version": 3
+  },
+  "version": "567.0.0"
+}

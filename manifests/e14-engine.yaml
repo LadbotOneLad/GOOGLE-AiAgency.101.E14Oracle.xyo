@@ -1,0 +1,20 @@
+﻿apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: e14-engine
+  namespace: k8-mu-orch
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: e14-engine
+  template:
+    metadata:
+      labels:
+        app: e14-engine
+    spec:
+      containers:
+      - name: e14-engine
+        image: nginx:latest
+        ports:
+        - containerPort: 80
