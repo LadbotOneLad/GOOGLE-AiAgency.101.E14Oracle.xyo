@@ -1,0 +1,7 @@
+﻿output/
+__pycache__/
+*.json
+*.csv
+*.mp4
+*.webm
+*.info.json
