@@ -1,0 +1,10 @@
+﻿{
+  "name": "Unified Truth Engine",
+  "version": "0.1.0",
+  "layers": [
+    "Atmospheric Truth Layer",
+    "XYO Reality Engine",
+    "Market Anchor Engine"
+  ],
+  "entrypoint": "Unified-Truth-Engine/run_all.py"
+}
