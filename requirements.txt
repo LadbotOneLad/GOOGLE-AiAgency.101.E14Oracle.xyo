@@ -1,4 +1,4 @@
 ﻿sympy
-urllib3
 requests
+urllib3
 numpy
