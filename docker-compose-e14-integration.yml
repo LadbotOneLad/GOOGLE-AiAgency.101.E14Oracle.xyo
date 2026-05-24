@@ -1,0 +1,488 @@
+version: "3.9"
+
+services:
+  # ═══════════════════════════════════════════════════════════════
+  # AIFACTORI CORE (14-Engine Sovereign Architecture)
+  # ═══════════════════════════════════════════════════════════════
+
+  engine-365:
+    image: aifactori/engine-4gr:latest
+    container_name: engine-365
+    restart: unless-stopped
+    environment:
+      - ENGINE_ID=365
+      - ENGINE_ROLE=validator
+      - LOCK_ID=7f4a9e2c-8d3b-47e1-9f6c-2a5d8e1b4f7a
+      - LOCK_DURATION_DAYS=90
+      - MERKLE_ROOT=b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6a7b8c9d0e1f2
+    ports:
+      - "365:365"
+    volumes:
+      - ./lock-metadata.json:/app/lock-metadata.json:ro
+      - aifactori-365-logs:/logs
+    networks:
+      - aifactori-net
+      - e14-integration
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:365/4gr/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+  engine-777:
+    image: aifactori/engine-4gr:latest
+    container_name: engine-777
+    restart: unless-stopped
+    environment:
+      - ENGINE_ID=777
+      - ENGINE_ROLE=sovereign
+      - LOCK_ID=7f4a9e2c-8d3b-47e1-9f6c-2a5d8e1b4f7a
+      - LOCK_DURATION_DAYS=90
+    ports:
+      - "777:777"
+    volumes:
+      - ./lock-metadata.json:/app/lock-metadata.json:ro
+      - aifactori-777-logs:/logs
+    networks:
+      - aifactori-net
+      - e14-integration
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:777/4gr/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+  engine-101:
+    image: aifactori/engine-4gr:latest
+    container_name: engine-101
+    restart: unless-stopped
+    environment:
+      - ENGINE_ID=101
+      - ENGINE_ROLE=horizon
+      - LOCK_ID=7f4a9e2c-8d3b-47e1-9f6c-2a5d8e1b4f7a
+      - LOCK_DURATION_DAYS=90
+    ports:
+      - "101:101"
+    volumes:
+      - ./lock-metadata.json:/app/lock-metadata.json:ro
+      - aifactori-101-logs:/logs
+    networks:
+      - aifactori-net
+      - e14-integration
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:101/4gr/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+  engine-1001:
+    image: aifactori/engine-4gr:latest
+    container_name: engine-1001
+    restart: unless-stopped
+    environment:
+      - ENGINE_ID=1001
+      - ENGINE_ROLE=peer
+      - LOCK_ID=7f4a9e2c-8d3b-47e1-9f6c-2a5d8e1b4f7a
+      - LOCK_DURATION_DAYS=90
+    ports:
+      - "1001:1001"
+    volumes:
+      - ./lock-metadata.json:/app/lock-metadata.json:ro
+      - aifactori-1001-logs:/logs
+    networks:
+      - aifactori-net
+      - e14-integration
+
+  engine-1002:
+    image: aifactori/engine-4gr:latest
+    container_name: engine-1002
+    restart: unless-stopped
+    environment:
+      - ENGINE_ID=1002
+      - ENGINE_ROLE=peer
+      - LOCK_ID=7f4a9e2c-8d3b-47e1-9f6c-2a5d8e1b4f7a
+      - LOCK_DURATION_DAYS=90
+    ports:
+      - "1002:1002"
+    volumes:
+      - ./lock-metadata.json:/app/lock-metadata.json:ro
+      - aifactori-1002-logs:/logs
+    networks:
+      - aifactori-net
+      - e14-integration
+
+  engine-1003:
+    image: aifactori/engine-4gr:latest
+    container_name: engine-1003
+    restart: unless-stopped
+    environment:
+      - ENGINE_ID=1003
+      - ENGINE_ROLE=peer
+      - LOCK_ID=7f4a9e2c-8d3b-47e1-9f6c-2a5d8e1b4f7a
+      - LOCK_DURATION_DAYS=90
+    ports:
+      - "1003:1003"
+    volumes:
+      - ./lock-metadata.json:/app/lock-metadata.json:ro
+      - aifactori-1003-logs:/logs
+    networks:
+      - aifactori-net
+      - e14-integration
+
+  engine-1004:
+    image: aifactori/engine-4gr:latest
+    container_name: engine-1004
+    restart: unless-stopped
+    environment:
+      - ENGINE_ID=1004
+      - ENGINE_ROLE=peer
+      - LOCK_ID=7f4a9e2c-8d3b-47e1-9f6c-2a5d8e1b4f7a
+      - LOCK_DURATION_DAYS=90
+    ports:
+      - "1004:1004"
+    volumes:
+      - ./lock-metadata.json:/app/lock-metadata.json:ro
+      - aifactori-1004-logs:/logs
+    networks:
+      - aifactori-net
+      - e14-integration
+
+  engine-1005:
+    image: aifactori/engine-4gr:latest
+    container_name: engine-1005
+    restart: unless-stopped
+    environment:
+      - ENGINE_ID=1005
+      - ENGINE_ROLE=peer
+      - LOCK_ID=7f4a9e2c-8d3b-47e1-9f6c-2a5d8e1b4f7a
+      - LOCK_DURATION_DAYS=90
+    ports:
+      - "1005:1005"
+    volumes:
+      - ./lock-metadata.json:/app/lock-metadata.json:ro
+      - aifactori-1005-logs:/logs
+    networks:
+      - aifactori-net
+      - e14-integration
+
+  engine-1006:
+    image: aifactori/engine-4gr:latest
+    container_name: engine-1006
+    restart: unless-stopped
+    environment:
+      - ENGINE_ID=1006
+      - ENGINE_ROLE=peer
+      - LOCK_ID=7f4a9e2c-8d3b-47e1-9f6c-2a5d8e1b4f7a
+      - LOCK_DURATION_DAYS=90
+    ports:
+      - "1006:1006"
+    volumes:
+      - ./lock-metadata.json:/app/lock-metadata.json:ro
+      - aifactori-1006-logs:/logs
+    networks:
+      - aifactori-net
+      - e14-integration
+
+  engine-1007:
+    image: aifactori/engine-4gr:latest
+    container_name: engine-1007
+    restart: unless-stopped
+    environment:
+      - ENGINE_ID=1007
+      - ENGINE_ROLE=peer
+      - LOCK_ID=7f4a9e2c-8d3b-47e1-9f6c-2a5d8e1b4f7a
+      - LOCK_DURATION_DAYS=90
+    ports:
+      - "1007:1007"
+    volumes:
+      - ./lock-metadata.json:/app/lock-metadata.json:ro
+      - aifactori-1007-logs:/logs
+    networks:
+      - aifactori-net
+      - e14-integration
+
+  engine-1008:
+    image: aifactori/engine-4gr:latest
+    container_name: engine-1008
+    restart: unless-stopped
+    environment:
+      - ENGINE_ID=1008
+      - ENGINE_ROLE=peer
+      - LOCK_ID=7f4a9e2c-8d3b-47e1-9f6c-2a5d8e1b4f7a
+      - LOCK_DURATION_DAYS=90
+    ports:
+      - "1008:1008"
+    volumes:
+      - ./lock-metadata.json:/app/lock-metadata.json:ro
+      - aifactori-1008-logs:/logs
+    networks:
+      - aifactori-net
+      - e14-integration
+
+  engine-1009:
+    image: aifactori/engine-4gr:latest
+    container_name: engine-1009
+    restart: unless-stopped
+    environment:
+      - ENGINE_ID=1009
+      - ENGINE_ROLE=peer
+      - LOCK_ID=7f4a9e2c-8d3b-47e1-9f6c-2a5d8e1b4f7a
+      - LOCK_DURATION_DAYS=90
+    ports:
+      - "1009:1009"
+    volumes:
+      - ./lock-metadata.json:/app/lock-metadata.json:ro
+      - aifactori-1009-logs:/logs
+    networks:
+      - aifactori-net
+      - e14-integration
+
+  engine-1010:
+    image: aifactori/engine-4gr:latest
+    container_name: engine-1010
+    restart: unless-stopped
+    environment:
+      - ENGINE_ID=1010
+      - ENGINE_ROLE=peer
+      - LOCK_ID=7f4a9e2c-8d3b-47e1-9f6c-2a5d8e1b4f7a
+      - LOCK_DURATION_DAYS=90
+    ports:
+      - "1010:1010"
+    volumes:
+      - ./lock-metadata.json:/app/lock-metadata.json:ro
+      - aifactori-1010-logs:/logs
+    networks:
+      - aifactori-net
+      - e14-integration
+
+  engine-1011:
+    image: aifactori/engine-4gr:latest
+    container_name: engine-1011
+    restart: unless-stopped
+    environment:
+      - ENGINE_ID=1011
+      - ENGINE_ROLE=peer
+      - LOCK_ID=7f4a9e2c-8d3b-47e1-9f6c-2a5d8e1b4f7a
+      - LOCK_DURATION_DAYS=90
+    ports:
+      - "1011:1011"
+    volumes:
+      - ./lock-metadata.json:/app/lock-metadata.json:ro
+      - aifactori-1011-logs:/logs
+    networks:
+      - aifactori-net
+      - e14-integration
+
+  engine-1012:
+    image: aifactori/engine-4gr:latest
+    container_name: engine-1012
+    restart: unless-stopped
+    environment:
+      - ENGINE_ID=1012
+      - ENGINE_ROLE=peer
+      - LOCK_ID=7f4a9e2c-8d3b-47e1-9f6c-2a5d8e1b4f7a
+      - LOCK_DURATION_DAYS=90
+    ports:
+      - "1012:1012"
+    volumes:
+      - ./lock-metadata.json:/app/lock-metadata.json:ro
+      - aifactori-1012-logs:/logs
+    networks:
+      - aifactori-net
+      - e14-integration
+
+  # ═══════════════════════════════════════════════════════════════
+  # E14 SYSTEM (Five Specialized Services)
+  # ═══════════════════════════════════════════════════════════════
+
+  oracle:
+    image: e14/oracle:stable
+    container_name: e14_oracle
+    restart: unless-stopped
+    environment:
+      - MODE=LOCKED
+      - LOCK_DURATION_DAYS=90
+      - AIFACTORI_INTEGRATION=enabled
+      - MERKLE_ROOT=b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6a7b8c9d0e1f2
+    volumes:
+      - ./manifests:/app/manifests
+      - ./config:/app/config
+      - e14-oracle-cache:/app/cache
+    ports:
+      - "8001:8001"
+    networks:
+      - e14-integration
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8001/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+  driftwatcher:
+    image: e14/driftwatcher:stable
+    container_name: e14_driftwatcher
+    restart: unless-stopped
+    environment:
+      - WATCH_MODE=LOCKED
+      - LOCK_DURATION_DAYS=90
+      - AIFACTORI_INTEGRATION=enabled
+      - ORACLE_HOST=oracle
+    volumes:
+      - ./config:/app/config
+      - ./logs:/app/logs
+      - e14-drift-logs:/app/drift-logs
+    ports:
+      - "8002:8002"
+    networks:
+      - e14-integration
+    depends_on:
+      - oracle
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8002/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+  taskmanager:
+    image: e14/taskmanager:stable
+    container_name: e14_taskmanager
+    restart: unless-stopped
+    environment:
+      - TASK_MODE=LOCKED
+      - LOCK_DURATION_DAYS=90
+      - AIFACTORI_INTEGRATION=enabled
+      - ORACLE_HOST=oracle
+    volumes:
+      - ./config:/app/config
+      - ./tasks:/app/tasks
+      - e14-tasks-queue:/app/queue
+    ports:
+      - "8003:8003"
+    networks:
+      - e14-integration
+    depends_on:
+      - oracle
+      - driftwatcher
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8003/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+  sympy-engine:
+    image: e14/sympy:stable
+    container_name: e14_sympy
+    restart: unless-stopped
+    environment:
+      - ENGINE_MODE=LOCKED
+      - LOCK_DURATION_DAYS=90
+      - AIFACTORI_INTEGRATION=enabled
+    volumes:
+      - ./config:/app/config
+      - e14-sympy-cache:/app/cache
+    ports:
+      - "8004:8004"
+    networks:
+      - e14-integration
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8004/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+  live-engine:
+    image: e14/live:stable
+    container_name: e14_live
+    restart: unless-stopped
+    environment:
+      - LIVE_MODE=LOCKED
+      - LOCK_DURATION_DAYS=90
+      - AIFACTORI_INTEGRATION=enabled
+      - ORACLE_HOST=oracle
+      - SYMPY_HOST=sympy-engine
+    volumes:
+      - ./config:/app/config
+      - ./logs:/app/logs
+      - e14-live-logs:/app/live-logs
+    ports:
+      - "8005:8005"
+    networks:
+      - e14-integration
+    depends_on:
+      - oracle
+      - sympy-engine
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8005/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+  # ═══════════════════════════════════════════════════════════════
+  # OBSERVABILITY STACK (Unified)
+  # ═══════════════════════════════════════════════════════════════
+
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus
+    restart: unless-stopped
+    environment:
+      - MODE=LOCKED
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - prometheus-data:/prometheus
+    ports:
+      - "9090:9090"
+    networks:
+      - aifactori-net
+      - e14-integration
+    command:
+      - "--config.file=/etc/prometheus/prometheus.yml"
+      - "--storage.tsdb.path=/prometheus"
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    restart: unless-stopped
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+      - GF_SECURITY_ADMIN_USER=admin
+      - MODE=LOCKED
+    volumes:
+      - grafana-data:/var/lib/grafana
+    ports:
+      - "3000:3000"
+    networks:
+      - aifactori-net
+      - e14-integration
+    depends_on:
+      - prometheus
+
+volumes:
+  aifactori-365-logs:
+  aifactori-777-logs:
+  aifactori-101-logs:
+  aifactori-1001-logs:
+  aifactori-1002-logs:
+  aifactori-1003-logs:
+  aifactori-1004-logs:
+  aifactori-1005-logs:
+  aifactori-1006-logs:
+  aifactori-1007-logs:
+  aifactori-1008-logs:
+  aifactori-1009-logs:
+  aifactori-1010-logs:
+  aifactori-1011-logs:
+  aifactori-1012-logs:
+  e14-oracle-cache:
+  e14-drift-logs:
+  e14-tasks-queue:
+  e14-sympy-cache:
+  e14-live-logs:
+  prometheus-data:
+  grafana-data:
+
+networks:
+  aifactori-net:
+    driver: bridge
+  e14-integration:
+    driver: bridge

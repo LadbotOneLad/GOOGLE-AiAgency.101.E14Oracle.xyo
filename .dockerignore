@@ -1,0 +1,70 @@
+# Git
+.git
+.gitignore
+.gitattributes
+
+# IDE
+.vscode
+.idea
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Python
+__pycache__
+*.pyc
+*.pyo
+*.egg-info
+dist
+build
+.pytest_cache
+.coverage
+
+# Documentation
+*.md
+docs/
+README*
+
+# CI/CD
+.github/workflows
+.gitlab-ci.yml
+.travis.yml
+
+# Tests
+tests/
+test_*
+*_test.py
+
+# Build artifacts
+*.o
+*.a
+*.so
+*.dylib
+
+# Node
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Temporary
+tmp/
+temp/
+*.tmp
+.env.example
+
+# Large files
+*.tar.gz
+*.zip
+*.iso
+
+# Lock files (keep lock-metadata only)
+requirements*.txt.lock
+
+# Non-essential
+examples/
+samples/
+demo/
+scripts/
+Makefile
+docker-compose*.yml

@@ -1,0 +1,286 @@
+services:
+  # Production 14 engines - synchronized with 176-day sovereign loop
+  # Shares state volume and FIXED_EPOCH for phase synchronization
+  
+  codex-engine-1:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: codex-engine-1-prod
+    environment:
+      MAX_TICKS: "10000"
+      SLEEP_S: "0.001"
+      LOG_FILE: "/logs/prod/codex-engine-1.json"
+      CUSTOM_ID: "codex-engine-1-prod"
+      FIXED_EPOCH: "1743724800"
+    volumes:
+      - logs:/logs
+      - state:/state
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 256M
+
+  codex-engine-2:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: codex-engine-2-prod
+    environment:
+      MAX_TICKS: "10000"
+      SLEEP_S: "0.001"
+      LOG_FILE: "/logs/prod/codex-engine-2.json"
+      CUSTOM_ID: "codex-engine-2-prod"
+      FIXED_EPOCH: "1743724800"
+    volumes:
+      - logs:/logs
+      - state:/state
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 256M
+
+  codex-engine-3:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: codex-engine-3-prod
+    environment:
+      MAX_TICKS: "10000"
+      SLEEP_S: "0.001"
+      LOG_FILE: "/logs/prod/codex-engine-3.json"
+      CUSTOM_ID: "codex-engine-3-prod"
+      FIXED_EPOCH: "1743724800"
+    volumes:
+      - logs:/logs
+      - state:/state
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 256M
+
+  codex-engine-4:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: codex-engine-4-prod
+    environment:
+      MAX_TICKS: "10000"
+      SLEEP_S: "0.001"
+      LOG_FILE: "/logs/prod/codex-engine-4.json"
+      CUSTOM_ID: "codex-engine-4-prod"
+      FIXED_EPOCH: "1743724800"
+    volumes:
+      - logs:/logs
+      - state:/state
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 256M
+
+  codex-engine-5:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: codex-engine-5-prod
+    environment:
+      MAX_TICKS: "10000"
+      SLEEP_S: "0.001"
+      LOG_FILE: "/logs/prod/codex-engine-5.json"
+      CUSTOM_ID: "codex-engine-5-prod"
+      FIXED_EPOCH: "1743724800"
+    volumes:
+      - logs:/logs
+      - state:/state
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 256M
+
+  codex-engine-6:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: codex-engine-6-prod
+    environment:
+      MAX_TICKS: "10000"
+      SLEEP_S: "0.001"
+      LOG_FILE: "/logs/prod/codex-engine-6.json"
+      CUSTOM_ID: "codex-engine-6-prod"
+      FIXED_EPOCH: "1743724800"
+    volumes:
+      - logs:/logs
+      - state:/state
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 256M
+
+  codex-engine-7:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: codex-engine-7-prod
+    environment:
+      MAX_TICKS: "10000"
+      SLEEP_S: "0.001"
+      LOG_FILE: "/logs/prod/codex-engine-7.json"
+      CUSTOM_ID: "codex-engine-7-prod"
+      FIXED_EPOCH: "1743724800"
+    volumes:
+      - logs:/logs
+      - state:/state
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 256M
+
+  codex-engine-8:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: codex-engine-8-prod
+    environment:
+      MAX_TICKS: "10000"
+      SLEEP_S: "0.001"
+      LOG_FILE: "/logs/prod/codex-engine-8.json"
+      CUSTOM_ID: "codex-engine-8-prod"
+      FIXED_EPOCH: "1743724800"
+    volumes:
+      - logs:/logs
+      - state:/state
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 256M
+
+  codex-engine-9:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: codex-engine-9-prod
+    environment:
+      MAX_TICKS: "10000"
+      SLEEP_S: "0.001"
+      LOG_FILE: "/logs/prod/codex-engine-9.json"
+      CUSTOM_ID: "codex-engine-9-prod"
+      FIXED_EPOCH: "1743724800"
+    volumes:
+      - logs:/logs
+      - state:/state
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 256M
+
+  codex-engine-10:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: codex-engine-10-prod
+    environment:
+      MAX_TICKS: "10000"
+      SLEEP_S: "0.001"
+      LOG_FILE: "/logs/prod/codex-engine-10.json"
+      CUSTOM_ID: "codex-engine-10-prod"
+      FIXED_EPOCH: "1743724800"
+    volumes:
+      - logs:/logs
+      - state:/state
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 256M
+
+  codex-engine-11:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: codex-engine-11-prod
+    environment:
+      MAX_TICKS: "10000"
+      SLEEP_S: "0.001"
+      LOG_FILE: "/logs/prod/codex-engine-11.json"
+      CUSTOM_ID: "codex-engine-11-prod"
+      FIXED_EPOCH: "1743724800"
+    volumes:
+      - logs:/logs
+      - state:/state
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 256M
+
+  codex-engine-12:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: codex-engine-12-prod
+    environment:
+      MAX_TICKS: "10000"
+      SLEEP_S: "0.001"
+      LOG_FILE: "/logs/prod/codex-engine-12.json"
+      CUSTOM_ID: "codex-engine-12-prod"
+      FIXED_EPOCH: "1743724800"
+    volumes:
+      - logs:/logs
+      - state:/state
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 256M
+
+  codex-ultimate:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: codex-ultimate-prod
+    environment:
+      MAX_TICKS: "10000"
+      SLEEP_S: "0.001"
+      LOG_FILE: "/logs/prod/codex-ultimate.json"
+      CUSTOM_ID: "codex-ultimate-prod"
+      FIXED_EPOCH: "1743724800"
+    volumes:
+      - logs:/logs
+      - state:/state
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: "1.0"
+          memory: 512M
+
+volumes:
+  logs:
+    driver: local
+  state:
+    driver: local
+
+networks:
+  default:
+    driver: bridge

@@ -1,0 +1,38 @@
+version: '3.9'
+
+services:
+  lucky7-api:
+    build:
+      context: .
+      dockerfile: Dockerfile.lucky7
+    container_name: lucky7-metrics-api
+    ports:
+      - "6665:6665"
+    environment:
+      - SERVICE_NAME=LUCKY7-ENGINE Metrics API
+      - LOG_LEVEL=info
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    depends_on:
+      - codex-engine-1
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:6665/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 5s
+    deploy:
+      resources:
+        limits:
+          cpus: "0.25"
+          memory: 256M
+        reservations:
+          cpus: "0.1"
+          memory: 128M
+
+# Reference to existing engine network (non-exclusive)
+networks:
+  default:
+    name: bridge
+    driver: bridge

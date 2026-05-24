@@ -1,0 +1,128 @@
+{
+  "$schema": "https://raw.githubusercontent.com/microsoft/terminal/main/doc/cascadia/profiles.schema.json",
+  "defaultProfile": "{574e775e-4f2a-5b96-ac1e-8aff4402f08f}",
+  "profiles": {
+    "defaults": {
+      "font": {
+        "face": "Cascadia Code",
+        "size": 10
+      },
+      "opacity": 0.95,
+      "useAcrylic": true
+    },
+    "list": [
+      {
+        "guid": "{574e775e-4f2a-5b96-ac1e-8aff4402f08f}",
+        "name": "🔴 Local Dev (PowerShell)",
+        "commandline": "pwsh",
+        "startingDirectory": "C:\\Users\\Admin\\OneDrive\\Desktop\\(   .  Y  .    )ENGINE",
+        "tabTitle": "LOCAL",
+        "tabColor": "#00AA00",
+        "background": "#0c0c0c",
+        "foreground": "#00FF00",
+        "cursorColor": "#CCCCCC",
+        "cursorShape": "filledBox",
+        "icon": "⚙️"
+      },
+      {
+        "guid": "{b453ae62-4e3d-5e6d-b6a5-a7fb36d7d91b}",
+        "name": "🟡 Ops Control (PowerShell)",
+        "commandline": "pwsh -NoExit -Command \"Write-Host '=== OPS CONTROL MODE ==='; . C:\\Users\\Admin\\OneDrive\\Desktop\\(   .  Y  .    )ENGINE\\gtop.ps1 status\"",
+        "startingDirectory": "C:\\Users\\Admin\\OneDrive\\Desktop\\(   .  Y  .    )ENGINE",
+        "tabTitle": "OPS",
+        "tabColor": "#FFAA00",
+        "background": "#0c0c0c",
+        "foreground": "#FFAA00",
+        "cursorColor": "#CCCCCC",
+        "cursorShape": "filledBox",
+        "icon": "🔧"
+      },
+      {
+        "guid": "{c8f5a573-3dd4-4e6e-b6b5-d9b9b3f88e2a}",
+        "name": "🔵 Engine-365 (Validator)",
+        "commandline": "pwsh -NoExit -Command \"$env:ENGINE_ID='365'; $env:ENGINE_ROLE='validator'; $env:ENGINE_PORT=365; $host.UI.RawUI.WindowTitle = 'Engine-365 | Validator'\"",
+        "startingDirectory": "C:\\Users\\Admin\\OneDrive\\Desktop\\(   .  Y  .    )ENGINE",
+        "tabTitle": "E365",
+        "tabColor": "#0066FF",
+        "background": "#0c0c0c",
+        "foreground": "#00FFFF",
+        "cursorColor": "#CCCCCC",
+        "icon": "🔴"
+      },
+      {
+        "guid": "{d9f6b684-4ee5-4f6f-b7c6-e0cac4g99f3b}",
+        "name": "👑 Engine-777 (Sovereign)",
+        "commandline": "pwsh -NoExit -Command \"$env:ENGINE_ID='777'; $env:ENGINE_ROLE='sovereign'; $env:ENGINE_PORT=777; $host.UI.RawUI.WindowTitle = 'Engine-777 | Sovereign'\"",
+        "startingDirectory": "C:\\Users\\Admin\\OneDrive\\Desktop\\(   .  Y  .    )ENGINE",
+        "tabTitle": "E777",
+        "tabColor": "#FF6600",
+        "background": "#0c0c0c",
+        "foreground": "#FFFF00",
+        "cursorColor": "#CCCCCC",
+        "icon": "👑"
+      },
+      {
+        "guid": "{e0a7c795-5ff6-5g7g-b8d7-f1dbd5h00g4c}",
+        "name": "🌅 Engine-101 (Horizon)",
+        "commandline": "pwsh -NoExit -Command \"$env:ENGINE_ID='101'; $env:ENGINE_ROLE='horizon'; $env:ENGINE_PORT=101; $host.UI.RawUI.WindowTitle = 'Engine-101 | Horizon'\"",
+        "startingDirectory": "C:\\Users\\Admin\\OneDrive\\Desktop\\(   .  Y  .    )ENGINE",
+        "tabTitle": "E101",
+        "tabColor": "#FF00FF",
+        "background": "#0c0c0c",
+        "foreground": "#FFFF00",
+        "cursorColor": "#CCCCCC",
+        "icon": "🌅"
+      },
+      {
+        "guid": "{f1b8d906-6gg7-6h8h-b9e8-g2ecf6i11h5d}",
+        "name": "🟢 Peer Cluster (1001-1012)",
+        "commandline": "pwsh -NoExit -Command \"Write-Host '=== PEER CLUSTER OVERVIEW ==='; . C:\\Users\\Admin\\OneDrive\\Desktop\\(   .  Y  .    )ENGINE\\gtop.ps1 list\"",
+        "startingDirectory": "C:\\Users\\Admin\\OneDrive\\Desktop\\(   .  Y  .    )ENGINE",
+        "tabTitle": "PEERS",
+        "tabColor": "#00FF00",
+        "background": "#0c0c0c",
+        "foreground": "#00FF00",
+        "cursorColor": "#CCCCCC",
+        "icon": "🟢"
+      },
+      {
+        "guid": "{g2c9e017-7hh8-7i9i-c0f9-h3fdf7j22i6e}",
+        "name": "🔍 Audit & Logs",
+        "commandline": "pwsh -NoExit -Command \"$env:MODE='audit'; Write-Host '=== AUDIT MODE ==='; Write-Host 'Lock verification, immutable logs, diff views'\"",
+        "startingDirectory": "C:\\Users\\Admin\\OneDrive\\Desktop\\(   .  Y  .    )ENGINE",
+        "tabTitle": "AUDIT",
+        "tabColor": "#FF0000",
+        "background": "#0c0c0c",
+        "foreground": "#FF6666",
+        "cursorColor": "#CCCCCC",
+        "icon": "🔍"
+      }
+    ]
+  },
+  "schemes": [
+    {
+      "name": "4D Terminal",
+      "background": "#0c0c0c",
+      "foreground": "#00FF00",
+      "cursorColor": "#CCCCCC",
+      "selectionBackground": "#117700",
+      "black": "#000000",
+      "red": "#FF0000",
+      "green": "#00FF00",
+      "yellow": "#FFFF00",
+      "blue": "#0066FF",
+      "purple": "#FF00FF",
+      "cyan": "#00FFFF",
+      "white": "#FFFFFF",
+      "brightBlack": "#666666",
+      "brightRed": "#FF6666",
+      "brightGreen": "#66FF66",
+      "brightYellow": "#FFFF66",
+      "brightBlue": "#6699FF",
+      "brightPurple": "#FF66FF",
+      "brightCyan": "#66FFFF",
+      "brightWhite": "#FFFFFF"
+    }
+  ],
+  "colorScheme": "4D Terminal"
+}

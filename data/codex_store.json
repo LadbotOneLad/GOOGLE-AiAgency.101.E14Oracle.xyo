@@ -1,0 +1,170 @@
+{
+  "laws": {
+    "law_layer": {
+      "consent_boundary": "fixed",
+      "witness_requirement": "fixed",
+      "identity_mutability": "disallowed"
+    }
+  },
+  "resonance_frames": [
+    {
+      "frame_id": "8cbe954ab0f0",
+      "timestamp_utc": "2026-03-09T01:05:52.721674+00:00",
+      "loop_depth": 6,
+      "inversion": true,
+      "layers_aligned": 3,
+      "resonance_lock": true,
+      "context": "OMEGA_NEG_3N1 dual-hemisphere graph",
+      "insight": "A system is what survives every attempt to destroy it."
+    },
+    {
+      "frame_id": "b6fbfe4f9168",
+      "timestamp_utc": "2026-03-09T01:07:43.851361+00:00",
+      "loop_depth": 2,
+      "inversion": true,
+      "layers_aligned": 3,
+      "resonance_lock": true,
+      "context": "OMEGA_NEG_3N1 dual-hemisphere graph",
+      "insight": "A system is what survives every attempt to destroy it."
+    },
+    {
+      "frame_id": "b6fbfe4f9168",
+      "timestamp_utc": "2026-03-09T01:10:51.489629+00:00",
+      "loop_depth": 2,
+      "inversion": true,
+      "layers_aligned": 3,
+      "resonance_lock": true,
+      "context": "OMEGA_NEG_3N1 dual-hemisphere graph",
+      "insight": "A system is what survives every attempt to destroy it."
+    },
+    {
+      "frame_id": "b6fbfe4f9168",
+      "timestamp_utc": "2026-03-09T02:24:59.625236+00:00",
+      "loop_depth": 2,
+      "inversion": true,
+      "layers_aligned": 3,
+      "resonance_lock": true,
+      "context": "OMEGA_NEG_3N1 dual-hemisphere graph",
+      "insight": "A system is what survives every attempt to destroy it."
+    },
+    {
+      "frame_id": "b6fbfe4f9168",
+      "timestamp_utc": "2026-03-10T05:18:37.429050+00:00",
+      "loop_depth": 2,
+      "inversion": true,
+      "layers_aligned": 3,
+      "resonance_lock": true,
+      "context": "OMEGA_NEG_3N1 dual-hemisphere graph",
+      "insight": "A system is what survives every attempt to destroy it."
+    },
+    {
+      "frame_id": "b6fbfe4f9168",
+      "timestamp_utc": "2026-03-10T05:30:05.615618+00:00",
+      "loop_depth": 2,
+      "inversion": true,
+      "layers_aligned": 3,
+      "resonance_lock": true,
+      "context": "OMEGA_NEG_3N1 dual-hemisphere graph",
+      "insight": "A system is what survives every attempt to destroy it."
+    },
+    {
+      "frame_id": "b6fbfe4f9168",
+      "timestamp_utc": "2026-03-10T05:32:32.872349+00:00",
+      "loop_depth": 2,
+      "inversion": true,
+      "layers_aligned": 3,
+      "resonance_lock": true,
+      "context": "OMEGA_NEG_3N1 dual-hemisphere graph",
+      "insight": "A system is what survives every attempt to destroy it."
+    },
+    {
+      "frame_id": "b6fbfe4f9168",
+      "timestamp_utc": "2026-03-10T05:53:16.808117+00:00",
+      "loop_depth": 2,
+      "inversion": true,
+      "layers_aligned": 3,
+      "resonance_lock": true,
+      "context": "OMEGA_NEG_3N1 dual-hemisphere graph",
+      "insight": "A system is what survives every attempt to destroy it."
+    },
+    {
+      "frame_id": "b6fbfe4f9168",
+      "timestamp_utc": "2026-03-10T06:01:09.178748+00:00",
+      "loop_depth": 2,
+      "inversion": true,
+      "layers_aligned": 3,
+      "resonance_lock": true,
+      "context": "OMEGA_NEG_3N1 dual-hemisphere graph",
+      "insight": "A system is what survives every attempt to destroy it."
+    },
+    {
+      "frame_id": "b6fbfe4f9168",
+      "timestamp_utc": "2026-03-17T06:04:41.600182+00:00",
+      "loop_depth": 2,
+      "inversion": true,
+      "layers_aligned": 3,
+      "resonance_lock": true,
+      "context": "OMEGA_NEG_3N1 dual-hemisphere graph",
+      "insight": "A system is what survives every attempt to destroy it."
+    },
+    {
+      "frame_id": "b34f23ff3459",
+      "timestamp_utc": "2026-03-17T06:19:24.885425+00:00",
+      "loop_depth": 2,
+      "inversion": true,
+      "layers_aligned": 3,
+      "resonance_lock": true,
+      "context": "OMEGA_NEG_3N1 dual-hemisphere graph",
+      "insight": "A system is what survives every attempt to destroy it."
+    },
+    {
+      "frame_id": "b34f23ff3459",
+      "timestamp_utc": "2026-03-17T06:20:27.708085+00:00",
+      "loop_depth": 2,
+      "inversion": true,
+      "layers_aligned": 3,
+      "resonance_lock": true,
+      "context": "OMEGA_NEG_3N1 dual-hemisphere graph",
+      "insight": "A system is what survives every attempt to destroy it."
+    },
+    {
+      "frame_id": "b34f23ff3459",
+      "timestamp_utc": "2026-03-17T06:21:35.806534+00:00",
+      "loop_depth": 2,
+      "inversion": true,
+      "layers_aligned": 3,
+      "resonance_lock": true,
+      "context": "OMEGA_NEG_3N1 dual-hemisphere graph",
+      "insight": "A system is what survives every attempt to destroy it."
+    }
+  ],
+  "invariants": [
+    "BASIN::absolute",
+    "BASIN::access",
+    "BASIN::adversarial",
+    "BASIN::after",
+    "BASIN::all",
+    "BASIN::are",
+    "BASIN::assumption",
+    "BASIN::audit",
+    "BASIN::auth",
+    "BASIN::between",
+    "BASIN::boundary",
+    "BASIN::breach",
+    "BASIN::breaks",
+    "BASIN::bypass",
+    "BASIN::cache",
+    "BASIN::cannot",
+    "BASIN::claim",
+    "BASIN::compromise",
+    "BASIN::control",
+    "BASIN::escalate",
+    "BASIN::execution",
+    "BASIN::executive",
+    "BASIN::exploit",
+    "Identity trust without independent witness is forgeable.",
+    "Observer inference persists even without direct access.",
+    "Recovery is bounded by detection latency.",
+    "Unverified guarantees become attack surfaces."
+  ]
+}

@@ -1,0 +1,35 @@
+# LUCKY7-ENGINE Metrics API
+# Multi-stage build: optimize for size and speed
+
+FROM python:3.11-slim as builder
+WORKDIR /build
+
+# Install dependencies
+COPY requirements.txt .
+RUN pip install --no-cache-dir --user -r requirements.txt
+
+# Runtime stage
+FROM python:3.11-slim
+WORKDIR /app
+
+# Copy Python dependencies from builder
+COPY --from=builder /root/.local /root/.local
+ENV PATH=/root/.local/bin:$PATH
+
+# Copy application
+COPY lucky7_api.py .
+
+# Metadata
+LABEL maintainer="robdoe.com"
+LABEL description="LUCKY7-ENGINE Metrics API on port 6665"
+LABEL version="1.0.0"
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
+    CMD python -c "import urllib.request; urllib.request.urlopen('http://localhost:6665/health')" || exit 1
+
+# Expose port
+EXPOSE 6665
+
+# Run
+CMD ["python", "-u", "lucky7_api.py"]

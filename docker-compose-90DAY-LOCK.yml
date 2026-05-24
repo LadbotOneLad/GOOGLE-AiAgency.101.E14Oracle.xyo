@@ -1,0 +1,419 @@
+version: "3.9"
+
+services:
+  # ════════════════════════════════════════════════════════════════════════════
+  # VALIDATOR ENGINE (365 days)
+  # ════════════════════════════════════════════════════════════════════════════
+  engine-365-validator:
+    build:
+      context: .
+      dockerfile: Dockerfile.4gr
+    container_name: engine-365
+    ports:
+      - "365:365"
+    environment:
+      - ENGINE_ID=365
+      - ENGINE_PORT=365
+      - ENGINE_TYPE=validator
+      - LOCK_ID=${LOCK_ID:-unset}
+      - LOCK_INCEPTION=${LOCK_INCEPTION:-unset}
+      - LOCK_EXPIRY=${LOCK_EXPIRY:-unset}
+      - LOCK_ROOT_HASH=${LOCK_ROOT_HASH:-unset}
+      - LOCK_PHRASE=${LOCK_PHRASE:-unset}
+      - WOBBLE_SUU=${WOBBLE_SUU:-0.05}
+      - WOBBLE_AHA=${WOBBLE_AHA:-0.075}
+      - WOBBLE_RERE=${WOBBLE_RERE:-0.15}
+      - ENFORCE_LOCK=true
+    volumes:
+      - ./logs/engine-365:/app/logs
+      - ./lock-metadata.json:/app/lock-metadata.json:ro
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:365/4gr/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 512M
+        reservations:
+          cpus: "0.3"
+          memory: 256M
+    labels:
+      engine: "validator"
+      lock: "90day-sync"
+      te-papa-matihiko: "true"
+
+  # ════════════════════════════════════════════════════════════════════════════
+  # SOVEREIGN ENGINE (777 ultimate)
+  # ════════════════════════════════════════════════════════════════════════════
+  engine-777-sovereign:
+    build:
+      context: .
+      dockerfile: Dockerfile.4gr
+    container_name: engine-777
+    ports:
+      - "777:777"
+    environment:
+      - ENGINE_ID=777
+      - ENGINE_PORT=777
+      - ENGINE_TYPE=sovereign
+      - LOCK_ID=${LOCK_ID:-unset}
+      - LOCK_INCEPTION=${LOCK_INCEPTION:-unset}
+      - LOCK_EXPIRY=${LOCK_EXPIRY:-unset}
+      - LOCK_ROOT_HASH=${LOCK_ROOT_HASH:-unset}
+      - LOCK_PHRASE=${LOCK_PHRASE:-unset}
+      - WOBBLE_SUU=${WOBBLE_SUU:-0.05}
+      - WOBBLE_AHA=${WOBBLE_AHA:-0.075}
+      - WOBBLE_RERE=${WOBBLE_RERE:-0.15}
+      - ENFORCE_LOCK=true
+    volumes:
+      - ./logs/engine-777:/app/logs
+      - ./lock-metadata.json:/app/lock-metadata.json:ro
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:777/4gr/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 512M
+        reservations:
+          cpus: "0.3"
+          memory: 256M
+    labels:
+      engine: "sovereign"
+      lock: "90day-sync"
+      te-papa-matihiko: "true"
+
+  # ════════════════════════════════════════════════════════════════════════════
+  # HORIZON ENGINE (101)
+  # ════════════════════════════════════════════════════════════════════════════
+  engine-101-horizon:
+    build:
+      context: .
+      dockerfile: Dockerfile.4gr
+    container_name: engine-101
+    ports:
+      - "101:101"
+    environment:
+      - ENGINE_ID=101
+      - ENGINE_PORT=101
+      - ENGINE_TYPE=horizon
+      - LOCK_ID=${LOCK_ID:-unset}
+      - LOCK_INCEPTION=${LOCK_INCEPTION:-unset}
+      - LOCK_EXPIRY=${LOCK_EXPIRY:-unset}
+      - LOCK_ROOT_HASH=${LOCK_ROOT_HASH:-unset}
+      - LOCK_PHRASE=${LOCK_PHRASE:-unset}
+      - WOBBLE_SUU=${WOBBLE_SUU:-0.05}
+      - WOBBLE_AHA=${WOBBLE_AHA:-0.075}
+      - WOBBLE_RERE=${WOBBLE_RERE:-0.15}
+      - ENFORCE_LOCK=true
+    volumes:
+      - ./logs/engine-101:/app/logs
+      - ./lock-metadata.json:/app/lock-metadata.json:ro
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:101/4gr/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 512M
+        reservations:
+          cpus: "0.3"
+          memory: 256M
+    labels:
+      engine: "horizon"
+      lock: "90day-sync"
+      te-papa-matihiko: "true"
+
+  # ════════════════════════════════════════════════════════════════════════════
+  # PEER ENGINES (1001-1012)
+  # ════════════════════════════════════════════════════════════════════════════
+  engine-1001-peer:
+    build:
+      context: .
+      dockerfile: Dockerfile.4gr
+    container_name: engine-1001
+    ports:
+      - "1001:1001"
+    environment:
+      - ENGINE_ID=1001
+      - ENGINE_PORT=1001
+      - ENGINE_TYPE=peer
+      - LOCK_ID=${LOCK_ID:-unset}
+      - LOCK_INCEPTION=${LOCK_INCEPTION:-unset}
+      - LOCK_EXPIRY=${LOCK_EXPIRY:-unset}
+      - LOCK_ROOT_HASH=${LOCK_ROOT_HASH:-unset}
+      - LOCK_PHRASE=${LOCK_PHRASE:-unset}
+      - WOBBLE_SUU=${WOBBLE_SUU:-0.05}
+      - WOBBLE_AHA=${WOBBLE_AHA:-0.075}
+      - WOBBLE_RERE=${WOBBLE_RERE:-0.15}
+      - ENFORCE_LOCK=true
+    volumes:
+      - ./logs/engine-1001:/app/logs
+      - ./lock-metadata.json:/app/lock-metadata.json:ro
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:1001/4gr/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 512M
+        reservations:
+          cpus: "0.3"
+          memory: 256M
+    labels:
+      engine: "peer"
+      lock: "90day-sync"
+      te-papa-matihiko: "true"
+
+  engine-1002-peer:
+    extends:
+      service: engine-1001-peer
+    container_name: engine-1002
+    ports:
+      - "1002:1002"
+    environment:
+      - ENGINE_ID=1002
+      - ENGINE_PORT=1002
+      - ENGINE_TYPE=peer
+      - LOCK_ID=${LOCK_ID:-unset}
+      - LOCK_INCEPTION=${LOCK_INCEPTION:-unset}
+      - LOCK_EXPIRY=${LOCK_EXPIRY:-unset}
+      - LOCK_ROOT_HASH=${LOCK_ROOT_HASH:-unset}
+      - LOCK_PHRASE=${LOCK_PHRASE:-unset}
+      - WOBBLE_SUU=${WOBBLE_SUU:-0.05}
+      - WOBBLE_AHA=${WOBBLE_AHA:-0.075}
+      - WOBBLE_RERE=${WOBBLE_RERE:-0.15}
+      - ENFORCE_LOCK=true
+    volumes:
+      - ./logs/engine-1002:/app/logs
+      - ./lock-metadata.json:/app/lock-metadata.json:ro
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:1002/4gr/health"]
+
+  engine-1003-peer:
+    extends:
+      service: engine-1001-peer
+    container_name: engine-1003
+    ports:
+      - "1003:1003"
+    environment:
+      - ENGINE_ID=1003
+      - ENGINE_PORT=1003
+      - ENGINE_TYPE=peer
+      - LOCK_ID=${LOCK_ID:-unset}
+      - LOCK_INCEPTION=${LOCK_INCEPTION:-unset}
+      - LOCK_EXPIRY=${LOCK_EXPIRY:-unset}
+      - LOCK_ROOT_HASH=${LOCK_ROOT_HASH:-unset}
+      - LOCK_PHRASE=${LOCK_PHRASE:-unset}
+      - WOBBLE_SUU=${WOBBLE_SUU:-0.05}
+      - WOBBLE_AHA=${WOBBLE_AHA:-0.075}
+      - WOBBLE_RERE=${WOBBLE_RERE:-0.15}
+      - ENFORCE_LOCK=true
+    volumes:
+      - ./logs/engine-1003:/app/logs
+      - ./lock-metadata.json:/app/lock-metadata.json:ro
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:1003/4gr/health"]
+
+  engine-1004-peer:
+    extends:
+      service: engine-1001-peer
+    container_name: engine-1004
+    ports:
+      - "1004:1004"
+
+  engine-1005-peer:
+    extends:
+      service: engine-1001-peer
+    container_name: engine-1005
+    ports:
+      - "1005:1005"
+
+  engine-1006-peer:
+    extends:
+      service: engine-1001-peer
+    container_name: engine-1006
+    ports:
+      - "1006:1006"
+
+  engine-1007-peer:
+    extends:
+      service: engine-1001-peer
+    container_name: engine-1007
+    ports:
+      - "1007:1007"
+
+  engine-1008-peer:
+    extends:
+      service: engine-1001-peer
+    container_name: engine-1008
+    ports:
+      - "1008:1008"
+
+  engine-1009-peer:
+    extends:
+      service: engine-1001-peer
+    container_name: engine-1009
+    ports:
+      - "1009:1009"
+
+  engine-1010-peer:
+    extends:
+      service: engine-1001-peer
+    container_name: engine-1010
+    ports:
+      - "1010:1010"
+
+  engine-1011-peer:
+    extends:
+      service: engine-1001-peer
+    container_name: engine-1011
+    ports:
+      - "1011:1011"
+
+  engine-1012-peer:
+    extends:
+      service: engine-1001-peer
+    container_name: engine-1012
+    ports:
+      - "1012:1012"
+
+  # ════════════════════════════════════════════════════════════════════════════
+  # OBSERVABILITY & AUDIT
+  # ════════════════════════════════════════════════════════════════════════════
+  mcp-audit-suite:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: mcp-suite-v2:latest
+    container_name: mcp-audit
+    ports:
+      - "8888:8888"
+    environment:
+      - FLASK_ENV=production
+      - LOG_LEVEL=INFO
+      - LOCK_ID=${LOCK_ID:-unset}
+      - LOCK_PHRASE=${LOCK_PHRASE:-unset}
+    volumes:
+      - ./logs/mcp:/app/logs
+      - ./audit_data:/app/audit_data
+      - ./lock-metadata.json:/app/lock-metadata.json:ro
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8888/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: "1.0"
+          memory: 1G
+        reservations:
+          cpus: "0.5"
+          memory: 512M
+    labels:
+      lock: "90day-sync"
+      te-papa-matihiko: "true"
+
+  digital-thymus:
+    build:
+      context: .
+      dockerfile: Dockerfile.thymus
+    image: digital-thymus:latest
+    container_name: thymus-core
+    ports:
+      - "999:9999"
+    environment:
+      - FLASK_ENV=production
+      - LOG_LEVEL=INFO
+      - LOCK_ID=${LOCK_ID:-unset}
+      - LOCK_PHRASE=${LOCK_PHRASE:-unset}
+    volumes:
+      - ./logs/thymus:/app/logs
+      - ./thymus_data:/app/data
+      - ./lock-metadata.json:/app/lock-metadata.json:ro
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9999/thymus/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: "1.0"
+          memory: 1G
+        reservations:
+          cpus: "0.5"
+          memory: 512M
+    labels:
+      lock: "90day-sync"
+      te-papa-matihiko: "true"
+
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus_data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+    restart: unless-stopped
+    depends_on:
+      - mcp-audit-suite
+    labels:
+      lock: "90day-sync"
+      te-papa-matihiko: "true"
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    ports:
+      - "3000:3000"
+    volumes:
+      - grafana_data:/var/lib/grafana
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+      - GF_USERS_ALLOW_SIGN_UP=false
+    restart: unless-stopped
+    depends_on:
+      - prometheus
+    labels:
+      lock: "90day-sync"
+      te-papa-matihiko: "true"
+
+volumes:
+  prometheus_data:
+  grafana_data:
+
+networks:
+  default:
+    name: te-papa-matihiko-network
+    labels:
+      lock: "90day-sync"

@@ -1,0 +1,16 @@
+[Unit]
+Description=Phill Root Engine
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/srv/codex-5.4
+EnvironmentFile=/srv/codex-5.4/deploy/engine.env
+ExecStart=/srv/codex-5.4/ezye_env/bin/python /srv/codex-5.4/engine.py --host 127.0.0.1 --port 8080
+Restart=always
+RestartSec=5
+User=www-data
+Group=www-data
+
+[Install]
+WantedBy=multi-user.target

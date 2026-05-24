@@ -1,0 +1,21 @@
+version: "3.9"
+
+services:
+  engine-stress-test:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: engine-stress-test
+    volumes:
+      - ./logs:/app/logs
+    command: python3 doctor_strange_one_way.py
+    entrypoint: ""
+    restart: "no"
+    deploy:
+      resources:
+        limits:
+          cpus: "0.95"
+          memory: 512M
+        reservations:
+          cpus: "0.8"
+          memory: 256M

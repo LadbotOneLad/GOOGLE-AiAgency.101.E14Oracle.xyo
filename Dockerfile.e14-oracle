@@ -1,0 +1,51 @@
+# ═══════════════════════════════════════════════════════════════════════════
+# E14 Oracle Service — Production Image
+# Decision Authority & Manifest Interpreter
+# ═══════════════════════════════════════════════════════════════════════════
+
+FROM python:3.11-slim
+
+LABEL maintainer="E14 Team <e14@tenetaiagency.dev>"
+LABEL description="E14 Oracle: Decision Authority with AiFACTORi Integration"
+LABEL version="1.0"
+
+# Create non-root user
+RUN useradd -m -u 1000 oracle && \
+    mkdir -p /app /logs /app/cache /app/config && \
+    chown -R oracle:oracle /app /logs /app/cache
+
+WORKDIR /app
+
+# Install dependencies
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install Python packages
+RUN pip install --no-cache-dir \
+    flask==2.3.0 \
+    requests==2.31.0 \
+    pydantic==2.0.0 \
+    pyyaml==6.0 \
+    python-dotenv==1.0.0
+
+# Copy application
+COPY --chown=oracle:oracle . ./
+
+# Environment
+ENV PYTHONUNBUFFERED=1 \
+    ORACLE_MODE=LOCKED \
+    LOCK_DURATION_DAYS=90 \
+    AIFACTORI_INTEGRATION=enabled \
+    FLASK_ENV=production \
+    LOG_DIR=/logs
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
+    CMD curl -f http://localhost:8001/health || exit 1
+
+USER oracle
+
+EXPOSE 8001
+
+CMD ["python", "-u", "-m", "flask", "run", "--host=0.0.0.0", "--port=8001"]

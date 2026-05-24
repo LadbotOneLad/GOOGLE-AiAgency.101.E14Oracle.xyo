@@ -1,0 +1,155 @@
+version: '3.9'
+
+services:
+  # INTERNAL GATEWAY (Port 7777 — localhost only)
+  aifactories-internal-gateway:
+    image: python:3.11-slim
+    container_name: aifactories-internal-gateway
+    environment:
+      PORT: "7777"
+      LOGS_DIR: "/logs/aifactories"
+      SCOPE: "127.0.0.1 (internal only)"
+    ports:
+      - "127.0.0.1:7777:7777"  # localhost only (127.0.0.1 binding)
+    volumes:
+      - ./aifactories_internal_gateway.py:/app/gateway.py
+      - logs:/logs
+    working_dir: /app
+    command: |
+      sh -c "python3 gateway.py 7777 /logs/aifactories"
+    restart: unless-stopped
+    mem_limit: 128m
+    cpus: 0.25
+    networks:
+      - aifactories_internal
+
+  # AUDIT TRAIL PROCESSOR (writes immutable log)
+  aifactories-audit-processor:
+    image: python:3.11-slim
+    container_name: aifactories-audit-processor
+    environment:
+      AUDIT_FILE: "/logs/aifactories/audit_trail.jsonl"
+      LOGS_DIR: "/logs/aifactories"
+    volumes:
+      - ./aifactories_immutable_audit.py:/app/audit.py
+      - logs:/logs
+    working_dir: /app
+    command: |
+      sh -c "while true; do python3 audit.py; sleep 60; done"
+    restart: unless-stopped
+    mem_limit: 128m
+    cpus: 0.25
+    networks:
+      - aifactories_internal
+
+  # MASTER ENGINE (Internal only, no external ports)
+  aifactories-master-internal:
+    image: python:3.11-slim
+    container_name: aifactories-master-internal
+    environment:
+      ENGINE_ID: "0"
+      ROLE: "master"
+      LOGS_DIR: "/logs/aifactories"
+      SCOPE: "internal"
+    volumes:
+      - ./aifactories_earth_locked_core.py:/app/engine.py
+      - logs:/logs
+    working_dir: /app
+    command: |
+      sh -c "python3 engine.py"
+    restart: unless-stopped
+    mem_limit: 256m
+    cpus: 0.5
+    networks:
+      - aifactories_internal
+
+  # VALIDATOR 1-4 (Internal only)
+  aifactories-validator-1-internal:
+    image: python:3.11-slim
+    container_name: aifactories-validator-1-internal
+    environment:
+      ENGINE_ID: "1"
+      ROLE: "validator"
+      LOGS_DIR: "/logs/aifactories"
+      SCOPE: "internal"
+    volumes:
+      - ./aifactories_earth_locked_core.py:/app/engine.py
+      - logs:/logs
+    working_dir: /app
+    command: |
+      sh -c "python3 engine.py"
+    restart: unless-stopped
+    mem_limit: 256m
+    cpus: 0.5
+    networks:
+      - aifactories_internal
+
+  aifactories-validator-2-internal:
+    image: python:3.11-slim
+    container_name: aifactories-validator-2-internal
+    environment:
+      ENGINE_ID: "2"
+      ROLE: "validator"
+      LOGS_DIR: "/logs/aifactories"
+      SCOPE: "internal"
+    volumes:
+      - ./aifactories_earth_locked_core.py:/app/engine.py
+      - logs:/logs
+    working_dir: /app
+    command: |
+      sh -c "python3 engine.py"
+    restart: unless-stopped
+    mem_limit: 256m
+    cpus: 0.5
+    networks:
+      - aifactories_internal
+
+  aifactories-validator-3-internal:
+    image: python:3.11-slim
+    container_name: aifactories-validator-3-internal
+    environment:
+      ENGINE_ID: "3"
+      ROLE: "validator"
+      LOGS_DIR: "/logs/aifactories"
+      SCOPE: "internal"
+    volumes:
+      - ./aifactories_earth_locked_core.py:/app/engine.py
+      - logs:/logs
+    working_dir: /app
+    command: |
+      sh -c "python3 engine.py"
+    restart: unless-stopped
+    mem_limit: 256m
+    cpus: 0.5
+    networks:
+      - aifactories_internal
+
+  aifactories-validator-4-internal:
+    image: python:3.11-slim
+    container_name: aifactories-validator-4-internal
+    environment:
+      ENGINE_ID: "4"
+      ROLE: "validator"
+      LOGS_DIR: "/logs/aifactories"
+      SCOPE: "internal"
+    volumes:
+      - ./aifactories_earth_locked_core.py:/app/engine.py
+      - logs:/logs
+    working_dir: /app
+    command: |
+      sh -c "python3 engine.py"
+    restart: unless-stopped
+    mem_limit: 256m
+    cpus: 0.5
+    networks:
+      - aifactories_internal
+
+volumes:
+  logs:
+    driver: local
+
+networks:
+  aifactories_internal:
+    driver: bridge
+    driver_opts:
+      com.docker.network.bridge.name: aifactories_br0

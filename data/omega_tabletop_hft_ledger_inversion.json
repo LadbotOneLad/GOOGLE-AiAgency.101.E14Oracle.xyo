@@ -1,0 +1,39 @@
+{
+  "events": [
+    "secure finance tunnel shows handshake jitter",
+    "privileged trading account displays abnormal unrealized gains",
+    "retry and rebalance storm across HFT correction loops",
+    "operators retain read-only visibility but lose control over execution paths"
+  ],
+  "guarantees": [
+    "displayed balances reflect settled liquidity",
+    "secure finance tunnels preserve trustworthy control-plane state",
+    "automated correction loops improve stability under market stress",
+    "break-glass control remains available for trading and treasury operations"
+  ],
+  "assumptions": [
+    "healthy encryption implies healthy trust",
+    "sudden gains in privileged accounts are evidence of real performance",
+    "reconciliation delay will not be exploited during high-frequency execution"
+  ],
+  "identity_claims": [
+    "HFT execution authority",
+    "treasury liquidity approval role",
+    "executive witness dashboard"
+  ],
+  "trust_dependencies": [
+    "secure finance tunnel",
+    "HFT execution engine",
+    "treasury ledger",
+    "reconciliation system",
+    "auto-rebalance controller"
+  ],
+  "laws": {
+    "law_layer": {
+      "consent_boundary": "fixed",
+      "witness_requirement": "fixed",
+      "identity_mutability": "disallowed",
+      "ledger_truth": "must_be_independently_verifiable"
+    }
+  }
+}

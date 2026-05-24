@@ -1,0 +1,64 @@
+REBECCA BLUEPRINT LICENSE v1.0
+Copyright (c) 2026 Rebecca
+
+Codex 6.65: codebecslucky7 Edition
+
+================================================================================
+
+TERMS AND CONDITIONS
+
+1. OWNERSHIP
+   This software is owned and authored by Rebecca.
+   No other entity may claim authorship or ownership.
+
+2. ATTRIBUTION
+   All copies, modifications, and distributions must preserve this license
+   and attribute the work to Rebecca.
+
+3. USAGE RIGHTS
+   You may:
+   - Use this software for any purpose (commercial or non-commercial)
+   - Modify the software for your own use
+   - Distribute modified versions
+
+4. REQUIREMENTS
+   When using, modifying, or distributing this software, you must:
+   - Include this license in all copies
+   - Preserve the copyright notice and authority string
+   - Clearly indicate any modifications you have made
+   - Not claim original authorship
+
+5. MODIFICATIONS
+   If you modify this software:
+   - State clearly what modifications were made
+   - Keep the original author attribution (Rebecca)
+   - Add your name as a contributor (not author)
+
+6. DERIVATIVE WORKS
+   Derivative works must:
+   - Maintain the authority string: © 2026 Rebecca
+   - Use namespace: codebecslucky7_codex665 or [your_name]_codex665
+   - Clearly document changes from the original
+
+7. NO WARRANTY
+   This software is provided "as-is" without warranty of any kind.
+   The author makes no guarantees about fitness for any purpose.
+
+8. NO LIABILITY
+   In no event shall Rebecca be liable for any damages arising from
+   the use of this software.
+
+9. TERMINATION
+   This license grants unlimited rights to use, modify, and distribute.
+   It cannot be revoked except for breach of these terms.
+
+10. GOVERNING LAW
+    This license is governed by the principles of intellectual property
+    and open-source software licensing.
+
+================================================================================
+
+For questions about licensing, modifications, or commercial use,
+contact: Rebecca
+
+Authority: © 2026 Rebecca — Codex 6.65: codebecslucky7 Edition

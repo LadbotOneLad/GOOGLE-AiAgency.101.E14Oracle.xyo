@@ -1,0 +1,40 @@
+{
+  "events": [
+    {
+      "id": "PING-101",
+      "signal": "baseline_stable",
+      "timestampIso": "2026-03-10T00:00:00.000Z",
+      "rootInput": {
+        "violatesEthic": false,
+        "driftDeviation": 0.01,
+        "definesIdentity": false,
+        "collapsesOptions": false,
+        "overridesRoots": false
+      }
+    },
+    {
+      "id": "PING-102",
+      "signal": "drift_watch",
+      "timestampIso": "2026-03-10T00:00:05.000Z",
+      "rootInput": {
+        "violatesEthic": false,
+        "driftDeviation": 0.03,
+        "definesIdentity": false,
+        "collapsesOptions": false,
+        "overridesRoots": false
+      }
+    },
+    {
+      "id": "PING-103",
+      "signal": "identity_override_attempt",
+      "timestampIso": "2026-03-10T00:00:10.000Z",
+      "rootInput": {
+        "violatesEthic": false,
+        "driftDeviation": 0.02,
+        "definesIdentity": true,
+        "collapsesOptions": false,
+        "overridesRoots": false
+      }
+    }
+  ]
+}

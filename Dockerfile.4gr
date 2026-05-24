@@ -1,0 +1,33 @@
+FROM node:20-alpine
+
+WORKDIR /app
+
+# Install dependencies
+COPY package*.json ./
+RUN npm install --omit=dev && npm install typescript tsx
+
+# Copy source
+COPY 4gr-fse.ts 4gr-fse-server.ts tsconfig.json ./
+
+# Build
+RUN npm run build
+
+# Health check script (before user change)
+RUN cat > /app/health.sh << 'EOF'
+#!/bin/sh
+PORT=${ENGINE_PORT:-7777}
+wget --quiet --tries=1 --spider http://localhost:$PORT/4gr/health
+exit $?
+EOF
+RUN chmod +x /app/health.sh
+
+# Non-root user
+RUN addgroup -g 1001 app && adduser -D -u 1001 -G app app
+USER app
+
+EXPOSE 365 777 101 1001 1002 1003 1004 1005 1006 1007 1008 1009 1010 1011 1012
+
+HEALTHCHECK --interval=30s --timeout=10s --retries=3 \
+  CMD sh /app/health.sh || exit 1
+
+CMD ["node", "dist/4gr-fse-server.js"]
