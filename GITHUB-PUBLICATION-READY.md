@@ -420,7 +420,7 @@ Repository is ready for public release.
 
 ═════════════════════════════════════════════════════════════════════════════
 
-Repository: https://github.com/eric-hadfield/te-papa-matihiko
+Repository: https://github.com/LadbotOneLad/te-papa-matihiko
 Creator: Eric Hadfield
 System: でじたるそう (Te Papa Matihiko) v1.0
 License: MIT License
