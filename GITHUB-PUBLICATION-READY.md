@@ -3,7 +3,7 @@
 ║          ✅ GITHUB & WHITEPAPER READY FOR PUBLIC RELEASE                   ║
 ║                                                                             ║
 ║  System: でじたるそう (Te Papa Matihiko) v1.0                             ║
-║  Creator: Eric Hadfield                                                    ║
+║  Creator: AiAgency                                                    ║
 ║  Repository: te-papa-matihiko                                              ║
 ║  Status: PRODUCTION READY                                                  ║
 ║  Date: 2025-01-14                                                          ║
