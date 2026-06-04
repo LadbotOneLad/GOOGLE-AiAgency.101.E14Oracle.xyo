@@ -1,0 +1,286 @@
+services:
+  # 176-day sovereign loop - synchronized with production engines
+  # Shares FIXED_EPOCH (1743724800) for phase synchronization
+  
+  codex-engine-1:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: codex-engine-1
+    environment:
+      MAX_TICKS: "1518518400"
+      SLEEP_S: "0.001"
+      LOG_FILE: "/logs/codex-engine-1.json"
+      CUSTOM_ID: "codex-engine-1"
+      FIXED_EPOCH: "1743724800"
+    volumes:
+      - logs:/logs
+      - state:/state
+    restart: always
+    deploy:
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 256M
+
+  codex-engine-2:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: codex-engine-2
+    environment:
+      MAX_TICKS: "1518518400"
+      SLEEP_S: "0.001"
+      LOG_FILE: "/logs/codex-engine-2.json"
+      CUSTOM_ID: "codex-engine-2"
+      FIXED_EPOCH: "1743724800"
+    volumes:
+      - logs:/logs
+      - state:/state
+    restart: always
+    deploy:
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 256M
+
+  codex-engine-3:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: codex-engine-3
+    environment:
+      MAX_TICKS: "1518518400"
+      SLEEP_S: "0.001"
+      LOG_FILE: "/logs/codex-engine-3.json"
+      CUSTOM_ID: "codex-engine-3"
+      FIXED_EPOCH: "1743724800"
+    volumes:
+      - logs:/logs
+      - state:/state
+    restart: always
+    deploy:
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 256M
+
+  codex-engine-4:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: codex-engine-4
+    environment:
+      MAX_TICKS: "1518518400"
+      SLEEP_S: "0.001"
+      LOG_FILE: "/logs/codex-engine-4.json"
+      CUSTOM_ID: "codex-engine-4"
+      FIXED_EPOCH: "1743724800"
+    volumes:
+      - logs:/logs
+      - state:/state
+    restart: always
+    deploy:
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 256M
+
+  codex-engine-5:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: codex-engine-5
+    environment:
+      MAX_TICKS: "1518518400"
+      SLEEP_S: "0.001"
+      LOG_FILE: "/logs/codex-engine-5.json"
+      CUSTOM_ID: "codex-engine-5"
+      FIXED_EPOCH: "1743724800"
+    volumes:
+      - logs:/logs
+      - state:/state
+    restart: always
+    deploy:
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 256M
+
+  codex-engine-6:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: codex-engine-6
+    environment:
+      MAX_TICKS: "1518518400"
+      SLEEP_S: "0.001"
+      LOG_FILE: "/logs/codex-engine-6.json"
+      CUSTOM_ID: "codex-engine-6"
+      FIXED_EPOCH: "1743724800"
+    volumes:
+      - logs:/logs
+      - state:/state
+    restart: always
+    deploy:
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 256M
+
+  codex-engine-7:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: codex-engine-7
+    environment:
+      MAX_TICKS: "1518518400"
+      SLEEP_S: "0.001"
+      LOG_FILE: "/logs/codex-engine-7.json"
+      CUSTOM_ID: "codex-engine-7"
+      FIXED_EPOCH: "1743724800"
+    volumes:
+      - logs:/logs
+      - state:/state
+    restart: always
+    deploy:
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 256M
+
+  codex-engine-8:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: codex-engine-8
+    environment:
+      MAX_TICKS: "1518518400"
+      SLEEP_S: "0.001"
+      LOG_FILE: "/logs/codex-engine-8.json"
+      CUSTOM_ID: "codex-engine-8"
+      FIXED_EPOCH: "1743724800"
+    volumes:
+      - logs:/logs
+      - state:/state
+    restart: always
+    deploy:
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 256M
+
+  codex-engine-9:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: codex-engine-9
+    environment:
+      MAX_TICKS: "1518518400"
+      SLEEP_S: "0.001"
+      LOG_FILE: "/logs/codex-engine-9.json"
+      CUSTOM_ID: "codex-engine-9"
+      FIXED_EPOCH: "1743724800"
+    volumes:
+      - logs:/logs
+      - state:/state
+    restart: always
+    deploy:
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 256M
+
+  codex-engine-10:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: codex-engine-10
+    environment:
+      MAX_TICKS: "1518518400"
+      SLEEP_S: "0.001"
+      LOG_FILE: "/logs/codex-engine-10.json"
+      CUSTOM_ID: "codex-engine-10"
+      FIXED_EPOCH: "1743724800"
+    volumes:
+      - logs:/logs
+      - state:/state
+    restart: always
+    deploy:
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 256M
+
+  codex-engine-11:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: codex-engine-11
+    environment:
+      MAX_TICKS: "1518518400"
+      SLEEP_S: "0.001"
+      LOG_FILE: "/logs/codex-engine-11.json"
+      CUSTOM_ID: "codex-engine-11"
+      FIXED_EPOCH: "1743724800"
+    volumes:
+      - logs:/logs
+      - state:/state
+    restart: always
+    deploy:
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 256M
+
+  codex-engine-12:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: codex-engine-12
+    environment:
+      MAX_TICKS: "1518518400"
+      SLEEP_S: "0.001"
+      LOG_FILE: "/logs/codex-engine-12.json"
+      CUSTOM_ID: "codex-engine-12"
+      FIXED_EPOCH: "1743724800"
+    volumes:
+      - logs:/logs
+      - state:/state
+    restart: always
+    deploy:
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 256M
+
+  codex-ultimate:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: codex-ultimate
+    environment:
+      MAX_TICKS: "1518518400"
+      SLEEP_S: "0.001"
+      LOG_FILE: "/logs/codex-ultimate.json"
+      CUSTOM_ID: "codex-ultimate"
+      FIXED_EPOCH: "1743724800"
+    volumes:
+      - logs:/logs
+      - state:/state
+    restart: always
+    deploy:
+      resources:
+        limits:
+          cpus: "1.0"
+          memory: 512M
+
+volumes:
+  logs:
+    driver: local
+  state:
+    driver: local
+
+networks:
+  default:
+    driver: bridge

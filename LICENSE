@@ -1,0 +1,123 @@
+MIT License
+
+Copyright © 2025 Eric Hadfield
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+---
+
+This is the MIT License for:
+
+Project Name: Te Papa Matihiko (でじたるそう)
+A Symbolic Digital Trinity Architecture
+
+Original Author: Eric Hadfield
+Date: January 14, 2025
+Version: 1.0
+
+---
+
+ADDITIONAL ATTRIBUTION REQUIREMENTS (Beyond MIT License):
+
+While the MIT License permits free use without restriction, the creator
+respectfully requests that all uses include proper attribution to:
+
+  Eric Hadfield
+  Creator of Te Papa Matihiko
+  Copyright © 2025
+
+The specific form of attribution can be:
+
+  Minimum:
+    "Te Papa Matihiko by Eric Hadfield (MIT License)"
+
+  Preferred:
+    "This project uses Te Papa Matihiko, a symbolic digital trinity
+     architecture created by Eric Hadfield, licensed under the MIT License"
+
+  Academic/Formal:
+    "Hadfield, Eric. (2025). Te Papa Matihiko: A Symbolic Digital Trinity
+     Architecture. Version 1.0. Licensed under MIT License.
+     Copyright © 2025 Eric Hadfield."
+
+---
+
+THIRD-PARTY COMPONENTS:
+
+This software may depend on third-party libraries and frameworks with their
+own licenses. Users must comply with all applicable third-party licenses.
+Common dependencies include:
+
+  Python:
+    - SymPy (BSD License)
+    - Flask (BSD License)
+    - Prometheus Python Client (Apache 2.0 License)
+
+  JavaScript/TypeScript:
+    - TypeScript (Apache 2.0 License)
+    - Node.js (Various - see nodejs.org)
+
+  Docker & Containers:
+    - Docker (Apache 2.0 License)
+    - Alpine Linux (Various - GPL, MIT, Apache 2.0)
+    - Python Official Image (Various)
+    - Node.js Official Image (Various)
+
+  Orchestration:
+    - Kubernetes (Apache 2.0 License)
+
+See LICENSE files in node_modules/, site-packages/, and container images
+for complete third-party licensing information.
+
+---
+
+PATENTS:
+
+The creator retains patent rights to core architectural innovations while
+granting an implicit patent license for use with Te Papa Matihiko.
+
+Users may not file patents on the fundamental design principles without
+explicit written permission from Eric Hadfield.
+
+---
+
+NO WARRANTY:
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
+USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+---
+
+COMMERCIAL USE:
+
+This software is provided under the MIT License at no cost. Commercial use
+is permitted under the terms of the MIT License.
+
+For enterprise licenses, warranty, or custom arrangements, contact:
+Eric Hadfield (licensing inquiries welcome)
+
+---
+
+Last Updated: January 14, 2025

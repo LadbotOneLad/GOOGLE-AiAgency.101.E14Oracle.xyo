@@ -1,0 +1,69 @@
+# ═══════════════════════════════════════════════════════════════════════════
+# AiFACTORi 4GR-FSE Engine — Production Image
+# Multi-stage build for minimal runtime size
+# ═══════════════════════════════════════════════════════════════════════════
+
+# Stage 1: Builder
+FROM python:3.11-slim as builder
+
+WORKDIR /build
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    build-essential \
+    git \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install Python dependencies
+COPY requirements.txt .
+RUN pip install --user --no-cache-dir -r requirements.txt
+
+# Stage 2: Runtime
+FROM python:3.11-slim
+
+LABEL maintainer="AiFACTORi Team <aifactori@tenetaiagency.dev>"
+LABEL description="AiFACTORi 4GR-FSE Sovereign Engine with 90-day Lock"
+LABEL version="2.0"
+
+# Create non-root user for security
+RUN useradd -m -u 1000 aifactori && \
+    mkdir -p /app /logs /app/lock && \
+    chown -R aifactori:aifactori /app /logs
+
+WORKDIR /app
+
+# Copy Python packages from builder
+COPY --from=builder /root/.local /home/aifactori/.local
+
+# Copy application code
+COPY --chown=aifactori:aifactori 4gr-fse.ts ./
+COPY --chown=aifactori:aifactori 4gr-fse-server.ts ./
+COPY --chown=aifactori:aifactori lock-initialize.ts ./
+COPY --chown=aifactori:aifactori lock-status.sh ./
+COPY --chown=aifactori:aifactori .dockerignore ./
+
+# Copy lock metadata (read-only)
+COPY --chown=aifactori:aifactori lock-metadata.json /app/lock/metadata.json
+
+# Environment variables
+ENV PATH=/home/aifactori/.local/bin:$PATH \
+    PYTHONUNBUFFERED=1 \
+    LOCK_METADATA_PATH=/app/lock/metadata.json \
+    LOG_DIR=/logs
+
+# Health check: Verify 4GR endpoint responds
+HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
+    CMD curl -f http://localhost:${ENGINE_PORT:-365}/4gr/health || exit 1
+
+# Set security constraints
+RUN chmod 755 /app/lock-status.sh && \
+    chmod 444 /app/lock/metadata.json
+
+# Drop to non-root user
+USER aifactori
+
+# Expose engine ports (override with ENGINE_PORT)
+EXPOSE 365 777 101 1001 1002 1003 1004 1005 1006 1007 1008 1009 1010 1011 1012
+
+# Run the engine
+ENTRYPOINT ["python", "-u", "4gr-fse-server.ts"]
+CMD ["--mode=locked", "--lock-duration=90"]

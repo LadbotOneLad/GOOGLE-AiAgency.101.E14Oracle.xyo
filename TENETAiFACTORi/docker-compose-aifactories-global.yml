@@ -1,0 +1,319 @@
+version: '3.9'
+
+services:
+  # Master Engine (Port 6650) — Prime Meridian Anchor
+  aifactories-master-0:
+    image: python:3.11-slim
+    container_name: aifactories-master-0
+    environment:
+      ENGINE_ID: "0"
+      ROLE: "master"
+      PORT: "6650"
+      GEOHASH: "00"
+      LOGS_DIR: "/logs/aifactories"
+    ports:
+      - "6650:6650"
+    volumes:
+      - ./aifactories_earth_locked_core.py:/app/aifactories_earth_locked_core.py
+      - ./aifactories_13_harmonic.py:/app/aifactories_13_harmonic.py
+      - logs:/logs
+    working_dir: /app
+    command: |
+      sh -c "python3 aifactories_earth_locked_core.py"
+    restart: unless-stopped
+    mem_limit: 256m
+    cpus: 0.5
+    networks:
+      - aifactories
+
+  # Validator 1 & 2 — US East & West
+  aifactories-validator-1:
+    image: python:3.11-slim
+    container_name: aifactories-validator-1
+    environment:
+      ENGINE_ID: "1"
+      ROLE: "validator"
+      PORT: "6651"
+      GEOHASH: "US"
+      LOGS_DIR: "/logs/aifactories"
+    ports:
+      - "6651:6651"
+    volumes:
+      - ./aifactories_earth_locked_core.py:/app/aifactories_earth_locked_core.py
+      - logs:/logs
+    working_dir: /app
+    command: |
+      sh -c "python3 aifactories_earth_locked_core.py"
+    restart: unless-stopped
+    mem_limit: 256m
+    cpus: 0.5
+    networks:
+      - aifactories
+
+  aifactories-validator-2:
+    image: python:3.11-slim
+    container_name: aifactories-validator-2
+    environment:
+      ENGINE_ID: "2"
+      ROLE: "validator"
+      PORT: "6652"
+      GEOHASH: "US"
+      LOGS_DIR: "/logs/aifactories"
+    ports:
+      - "6652:6652"
+    volumes:
+      - ./aifactories_earth_locked_core.py:/app/aifactories_earth_locked_core.py
+      - logs:/logs
+    working_dir: /app
+    command: |
+      sh -c "python3 aifactories_earth_locked_core.py"
+    restart: unless-stopped
+    mem_limit: 256m
+    cpus: 0.5
+    networks:
+      - aifactories
+
+  # Validator 3 & 4 — Europe West & East
+  aifactories-validator-3:
+    image: python:3.11-slim
+    container_name: aifactories-validator-3
+    environment:
+      ENGINE_ID: "3"
+      ROLE: "validator"
+      PORT: "6653"
+      GEOHASH: "EU"
+      LOGS_DIR: "/logs/aifactories"
+    ports:
+      - "6653:6653"
+    volumes:
+      - ./aifactories_earth_locked_core.py:/app/aifactories_earth_locked_core.py
+      - logs:/logs
+    working_dir: /app
+    command: |
+      sh -c "python3 aifactories_earth_locked_core.py"
+    restart: unless-stopped
+    mem_limit: 256m
+    cpus: 0.5
+    networks:
+      - aifactories
+
+  aifactories-validator-4:
+    image: python:3.11-slim
+    container_name: aifactories-validator-4
+    environment:
+      ENGINE_ID: "4"
+      ROLE: "validator"
+      PORT: "6654"
+      GEOHASH: "EU"
+      LOGS_DIR: "/logs/aifactories"
+    ports:
+      - "6654:6654"
+    volumes:
+      - ./aifactories_earth_locked_core.py:/app/aifactories_earth_locked_core.py
+      - logs:/logs
+    working_dir: /app
+    command: |
+      sh -c "python3 aifactories_earth_locked_core.py"
+    restart: unless-stopped
+    mem_limit: 256m
+    cpus: 0.5
+    networks:
+      - aifactories
+
+  # Validator 5, 6, 7 — Asia West, Central, East
+  aifactories-validator-5:
+    image: python:3.11-slim
+    container_name: aifactories-validator-5
+    environment:
+      ENGINE_ID: "5"
+      ROLE: "validator"
+      PORT: "6655"
+      GEOHASH: "AS"
+      LOGS_DIR: "/logs/aifactories"
+    ports:
+      - "6655:6655"
+    volumes:
+      - ./aifactories_earth_locked_core.py:/app/aifactories_earth_locked_core.py
+      - logs:/logs
+    working_dir: /app
+    command: |
+      sh -c "python3 aifactories_earth_locked_core.py"
+    restart: unless-stopped
+    mem_limit: 256m
+    cpus: 0.5
+    networks:
+      - aifactories
+
+  aifactories-validator-6:
+    image: python:3.11-slim
+    container_name: aifactories-validator-6
+    environment:
+      ENGINE_ID: "6"
+      ROLE: "validator"
+      PORT: "6656"
+      GEOHASH: "AS"
+      LOGS_DIR: "/logs/aifactories"
+    ports:
+      - "6656:6656"
+    volumes:
+      - ./aifactories_earth_locked_core.py:/app/aifactories_earth_locked_core.py
+      - logs:/logs
+    working_dir: /app
+    command: |
+      sh -c "python3 aifactories_earth_locked_core.py"
+    restart: unless-stopped
+    mem_limit: 256m
+    cpus: 0.5
+    networks:
+      - aifactories
+
+  aifactories-validator-7:
+    image: python:3.11-slim
+    container_name: aifactories-validator-7
+    environment:
+      ENGINE_ID: "7"
+      ROLE: "validator"
+      PORT: "6657"
+      GEOHASH: "AS"
+      LOGS_DIR: "/logs/aifactories"
+    ports:
+      - "6657:6657"
+    volumes:
+      - ./aifactories_earth_locked_core.py:/app/aifactories_earth_locked_core.py
+      - logs:/logs
+    working_dir: /app
+    command: |
+      sh -c "python3 aifactories_earth_locked_core.py"
+    restart: unless-stopped
+    mem_limit: 256m
+    cpus: 0.5
+    networks:
+      - aifactories
+
+  # Validator 8 — Australia
+  aifactories-validator-8:
+    image: python:3.11-slim
+    container_name: aifactories-validator-8
+    environment:
+      ENGINE_ID: "8"
+      ROLE: "validator"
+      PORT: "6658"
+      GEOHASH: "AU"
+      LOGS_DIR: "/logs/aifactories"
+    ports:
+      - "6658:6658"
+    volumes:
+      - ./aifactories_earth_locked_core.py:/app/aifactories_earth_locked_core.py
+      - logs:/logs
+    working_dir: /app
+    command: |
+      sh -c "python3 aifactories_earth_locked_core.py"
+    restart: unless-stopped
+    mem_limit: 256m
+    cpus: 0.5
+    networks:
+      - aifactories
+
+  # Validator 9 — South America
+  aifactories-validator-9:
+    image: python:3.11-slim
+    container_name: aifactories-validator-9
+    environment:
+      ENGINE_ID: "9"
+      ROLE: "validator"
+      PORT: "6659"
+      GEOHASH: "SA"
+      LOGS_DIR: "/logs/aifactories"
+    ports:
+      - "6659:6659"
+    volumes:
+      - ./aifactories_earth_locked_core.py:/app/aifactories_earth_locked_core.py
+      - logs:/logs
+    working_dir: /app
+    command: |
+      sh -c "python3 aifactories_earth_locked_core.py"
+    restart: unless-stopped
+    mem_limit: 256m
+    cpus: 0.5
+    networks:
+      - aifactories
+
+  # Validator 10 — Africa
+  aifactories-validator-10:
+    image: python:3.11-slim
+    container_name: aifactories-validator-10
+    environment:
+      ENGINE_ID: "10"
+      ROLE: "validator"
+      PORT: "6660"
+      GEOHASH: "AF"
+      LOGS_DIR: "/logs/aifactories"
+    ports:
+      - "6660:6660"
+    volumes:
+      - ./aifactories_earth_locked_core.py:/app/aifactories_earth_locked_core.py
+      - logs:/logs
+    working_dir: /app
+    command: |
+      sh -c "python3 aifactories_earth_locked_core.py"
+    restart: unless-stopped
+    mem_limit: 256m
+    cpus: 0.5
+    networks:
+      - aifactories
+
+  # Validator 11 — Arctic
+  aifactories-validator-11:
+    image: python:3.11-slim
+    container_name: aifactories-validator-11
+    environment:
+      ENGINE_ID: "11"
+      ROLE: "validator"
+      PORT: "6661"
+      GEOHASH: "AR"
+      LOGS_DIR: "/logs/aifactories"
+    ports:
+      - "6661:6661"
+    volumes:
+      - ./aifactories_earth_locked_core.py:/app/aifactories_earth_locked_core.py
+      - logs:/logs
+    working_dir: /app
+    command: |
+      sh -c "python3 aifactories_earth_locked_core.py"
+    restart: unless-stopped
+    mem_limit: 256m
+    cpus: 0.5
+    networks:
+      - aifactories
+
+  # Validator 12 — Antarctic
+  aifactories-validator-12:
+    image: python:3.11-slim
+    container_name: aifactories-validator-12
+    environment:
+      ENGINE_ID: "12"
+      ROLE: "validator"
+      PORT: "6662"
+      GEOHASH: "AN"
+      LOGS_DIR: "/logs/aifactories"
+    ports:
+      - "6662:6662"
+    volumes:
+      - ./aifactories_earth_locked_core.py:/app/aifactories_earth_locked_core.py
+      - logs:/logs
+    working_dir: /app
+    command: |
+      sh -c "python3 aifactories_earth_locked_core.py"
+    restart: unless-stopped
+    mem_limit: 256m
+    cpus: 0.5
+    networks:
+      - aifactories
+
+volumes:
+  logs:
+    driver: local
+
+networks:
+  aifactories:
+    driver: bridge

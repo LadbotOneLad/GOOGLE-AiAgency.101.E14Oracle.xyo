@@ -1,0 +1,39 @@
+{
+  "events": [
+    "emergency patch rollout outside release window",
+    "admin lockout spike across identity provider",
+    "executive dashboard created with attacker-shaped read-only telemetry",
+    "retry storm and thermal load increase across repair loops"
+  ],
+  "guarantees": [
+    "security patch provenance is trustworthy",
+    "break-glass administrative access always remains available",
+    "authorization boundaries cannot invert without detection",
+    "executive status channels reflect validated system truth"
+  ],
+  "assumptions": [
+    "internal update infrastructure is trustworthy by default",
+    "automatic remediation improves stability during a live compromise",
+    "trusted operators cannot be classified as hostile at scale"
+  ],
+  "identity_claims": [
+    "service-to-service signing authority",
+    "identity provider administrator role",
+    "executive read-only witness dashboard"
+  ],
+  "trust_dependencies": [
+    "update signing service",
+    "identity provider",
+    "policy engine",
+    "telemetry dashboard",
+    "auto-remediation controller"
+  ],
+  "laws": {
+    "law_layer": {
+      "consent_boundary": "fixed",
+      "witness_requirement": "fixed",
+      "identity_mutability": "disallowed",
+      "root_override": "disallowed"
+    }
+  }
+}

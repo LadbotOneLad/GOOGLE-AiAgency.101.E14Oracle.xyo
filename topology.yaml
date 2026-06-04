@@ -1,0 +1,242 @@
+# .15% SOLAR WAGYU — DIGITAL CUT
+# Global Engine Topology
+# Defines all 14 synchronized engines + roles
+
+version: "1.0"
+inception: "2025-01-14T10:00:00.000Z"
+expiry: "2025-04-14T10:00:00.000Z"
+lock_id: "550e8400-e29b-41d4-a716-446655440000"
+
+# Core Ring (3 engines)
+core:
+  - id: "365"
+    name: "engine-365"
+    role: "validator"
+    port: 365
+    description: "365-day cycle root, validates all pings"
+    tier: "core"
+    risk: "critical"
+    tags: ["root", "validator", "immutable"]
+
+  - id: "777"
+    name: "engine-777"
+    role: "sovereign"
+    port: 777
+    description: "Ultimate authority, apex decision"
+    tier: "core"
+    risk: "critical"
+    tags: ["sovereign", "ultimate", "authority"]
+
+  - id: "101"
+    name: "engine-101"
+    role: "horizon"
+    port: 101
+    description: "Boundary witness, observes edges"
+    tier: "core"
+    risk: "critical"
+    tags: ["horizon", "witness", "boundary"]
+
+# Peer Ring (12 engines)
+peers:
+  - id: "1001"
+    name: "engine-1001"
+    role: "peer"
+    port: 1001
+    description: "Peer node, consensus participant"
+    tier: "peer"
+    risk: "high"
+    tags: ["peer", "consensus"]
+
+  - id: "1002"
+    name: "engine-1002"
+    role: "peer"
+    port: 1002
+    description: "Peer node, consensus participant"
+    tier: "peer"
+    risk: "high"
+    tags: ["peer", "consensus"]
+
+  - id: "1003"
+    name: "engine-1003"
+    role: "peer"
+    port: 1003
+    description: "Peer node, consensus participant"
+    tier: "peer"
+    risk: "high"
+    tags: ["peer", "consensus"]
+
+  - id: "1004"
+    name: "engine-1004"
+    role: "peer"
+    port: 1004
+    description: "Peer node, consensus participant"
+    tier: "peer"
+    risk: "high"
+    tags: ["peer", "consensus"]
+
+  - id: "1005"
+    name: "engine-1005"
+    role: "peer"
+    port: 1005
+    description: "Peer node, consensus participant"
+    tier: "peer"
+    risk: "high"
+    tags: ["peer", "consensus"]
+
+  - id: "1006"
+    name: "engine-1006"
+    role: "peer"
+    port: 1006
+    description: "Peer node, consensus participant"
+    tier: "peer"
+    risk: "high"
+    tags: ["peer", "consensus"]
+
+  - id: "1007"
+    name: "engine-1007"
+    role: "peer"
+    port: 1007
+    description: "Peer node, consensus participant"
+    tier: "peer"
+    risk: "high"
+    tags: ["peer", "consensus"]
+
+  - id: "1008"
+    name: "engine-1008"
+    role: "peer"
+    port: 1008
+    description: "Peer node, consensus participant"
+    tier: "peer"
+    risk: "high"
+    tags: ["peer", "consensus"]
+
+  - id: "1009"
+    name: "engine-1009"
+    role: "peer"
+    port: 1009
+    description: "Peer node, consensus participant"
+    tier: "peer"
+    risk: "high"
+    tags: ["peer", "consensus"]
+
+  - id: "1010"
+    name: "engine-1010"
+    role: "peer"
+    port: 1010
+    description: "Peer node, consensus participant"
+    tier: "peer"
+    risk: "high"
+    tags: ["peer", "consensus"]
+
+  - id: "1011"
+    name: "engine-1011"
+    role: "peer"
+    port: 1011
+    description: "Peer node, consensus participant"
+    tier: "peer"
+    risk: "high"
+    tags: ["peer", "consensus"]
+
+  - id: "1012"
+    name: "engine-1012"
+    role: "peer"
+    port: 1012
+    description: "Peer node, consensus participant"
+    tier: "peer"
+    risk: "high"
+    tags: ["peer", "consensus"]
+
+# Observability Ring
+observability:
+  - id: "mcp"
+    name: "mcp-audit-suite"
+    role: "audit"
+    port: 8888
+    description: "MCP v2 audit suite, 20 microservices"
+    tier: "observability"
+    risk: "medium"
+    tags: ["audit", "metrics", "traces"]
+
+  - id: "thymus"
+    name: "digital-thymus"
+    role: "security"
+    port: 9999
+    description: "Digital Thymus core, zero-trust gatekeeper"
+    tier: "observability"
+    risk: "critical"
+    tags: ["security", "zero-trust", "validation"]
+
+  - id: "prometheus"
+    name: "prometheus"
+    role: "metrics"
+    port: 9090
+    description: "Prometheus time-series DB"
+    tier: "observability"
+    risk: "medium"
+    tags: ["metrics", "timeseries"]
+
+  - id: "grafana"
+    name: "grafana"
+    role: "dashboard"
+    port: 3000
+    description: "Grafana dashboards"
+    tier: "observability"
+    risk: "low"
+    tags: ["dashboards", "ui"]
+
+# Local host config
+host:
+  name: "local"
+  hostname: "localhost"
+  os: "windows"
+  terminal: "windows-terminal"
+  shell: "pwsh"
+  docker_host: "unix:///var/run/docker.sock"
+
+# Modes (task contexts)
+modes:
+  dev:
+    name: "Development"
+    emoji: "👤"
+    env_vars:
+      MODE: "dev"
+      LOGLEVEL: "debug"
+    aliases:
+      - "cdengine: Set-Location C:\\Users\\Admin\\OneDrive\\Desktop\\(   .  Y  .    )ENGINE"
+      - "build: docker compose -f docker-compose-14engines.yml build"
+      - "up: docker compose -f docker-compose-14engines.yml up -d"
+      - "ps: docker ps -f label=lock=90day-sync"
+      - "logs: docker compose -f docker-compose-14engines.yml logs -f"
+
+  ops:
+    name: "Operations"
+    emoji: "🔧"
+    env_vars:
+      MODE: "ops"
+      LOGLEVEL: "info"
+    aliases:
+      - "health: gtop status"
+      - "restart: docker compose -f docker-compose-14engines.yml restart"
+      - "prune: docker system prune -f"
+      - "inspect: docker inspect"
+
+  audit:
+    name: "Audit"
+    emoji: "🔍"
+    env_vars:
+      MODE: "audit"
+      LOGLEVEL: "warn"
+    aliases:
+      - "lock-status: bash ./lock-status.sh"
+      - "verify-lock: cat lock-metadata.json | ConvertFrom-Json"
+      - "traces: curl -s http://localhost:365/4gr/traces | ConvertFrom-Json"
+
+  experiment:
+    name: "Experiment"
+    emoji: "🧪"
+    env_vars:
+      MODE: "experiment"
+      LOGLEVEL: "debug"
+    aliases:
+      - "test-ping: curl -X POST http://localhost:365/4gr/ping -d '{\"id\":\"test\",\"signal\":\"ping\"}'"
+      - "test-cycle: curl -X POST http://localhost:365/4gr/cycle"

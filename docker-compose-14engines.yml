@@ -1,0 +1,653 @@
+version: "3.9"
+
+services:
+  engine-365-validator:
+    build:
+      context: .
+      dockerfile: Dockerfile.4gr
+    container_name: engine-365
+    ports:
+      - "365:365"
+    environment:
+      - ENGINE_ID=365
+      - ENGINE_PORT=365
+      - ENGINE_TYPE=validator
+      - LOCK_ID=${LOCK_ID:-unset}
+      - LOCK_INCEPTION=${LOCK_INCEPTION:-unset}
+      - LOCK_EXPIRY=${LOCK_EXPIRY:-unset}
+      - LOCK_ROOT_HASH=${LOCK_ROOT_HASH:-unset}
+      - LOCK_PHRASE=${LOCK_PHRASE:-unset}
+      - WOBBLE_SUU=${WOBBLE_SUU:-0.05}
+      - WOBBLE_AHA=${WOBBLE_AHA:-0.075}
+      - WOBBLE_RERE=${WOBBLE_RERE:-0.15}
+      - ENFORCE_LOCK=true
+    volumes:
+      - ./logs/engine-365:/app/logs
+      - ./lock-metadata.json:/app/lock-metadata.json:ro
+    healthcheck:
+      test: ["CMD", "sh", "/app/health.sh"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 512M
+        reservations:
+          cpus: "0.3"
+          memory: 256M
+    labels:
+      engine: "validator"
+      lock: "90day-sync"
+      te-papa-matihiko: "true"
+
+  engine-777-sovereign:
+    build:
+      context: .
+      dockerfile: Dockerfile.4gr
+    container_name: engine-777
+    ports:
+      - "777:777"
+    environment:
+      - ENGINE_ID=777
+      - ENGINE_PORT=777
+      - ENGINE_TYPE=sovereign
+      - LOCK_ID=${LOCK_ID:-unset}
+      - LOCK_INCEPTION=${LOCK_INCEPTION:-unset}
+      - LOCK_EXPIRY=${LOCK_EXPIRY:-unset}
+      - LOCK_ROOT_HASH=${LOCK_ROOT_HASH:-unset}
+      - LOCK_PHRASE=${LOCK_PHRASE:-unset}
+      - WOBBLE_SUU=${WOBBLE_SUU:-0.05}
+      - WOBBLE_AHA=${WOBBLE_AHA:-0.075}
+      - WOBBLE_RERE=${WOBBLE_RERE:-0.15}
+      - ENFORCE_LOCK=true
+    volumes:
+      - ./logs/engine-777:/app/logs
+      - ./lock-metadata.json:/app/lock-metadata.json:ro
+    healthcheck:
+      test: ["CMD", "sh", "/app/health.sh"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 512M
+        reservations:
+          cpus: "0.3"
+          memory: 256M
+    labels:
+      engine: "sovereign"
+      lock: "90day-sync"
+      te-papa-matihiko: "true"
+
+  engine-101-horizon:
+    build:
+      context: .
+      dockerfile: Dockerfile.4gr
+    container_name: engine-101
+    ports:
+      - "101:101"
+    environment:
+      - ENGINE_ID=101
+      - ENGINE_PORT=101
+      - ENGINE_TYPE=horizon
+      - LOCK_ID=${LOCK_ID:-unset}
+      - LOCK_INCEPTION=${LOCK_INCEPTION:-unset}
+      - LOCK_EXPIRY=${LOCK_EXPIRY:-unset}
+      - LOCK_ROOT_HASH=${LOCK_ROOT_HASH:-unset}
+      - LOCK_PHRASE=${LOCK_PHRASE:-unset}
+      - WOBBLE_SUU=${WOBBLE_SUU:-0.05}
+      - WOBBLE_AHA=${WOBBLE_AHA:-0.075}
+      - WOBBLE_RERE=${WOBBLE_RERE:-0.15}
+      - ENFORCE_LOCK=true
+    volumes:
+      - ./logs/engine-101:/app/logs
+      - ./lock-metadata.json:/app/lock-metadata.json:ro
+    healthcheck:
+      test: ["CMD", "sh", "/app/health.sh"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 512M
+        reservations:
+          cpus: "0.3"
+          memory: 256M
+    labels:
+      engine: "horizon"
+      lock: "90day-sync"
+      te-papa-matihiko: "true"
+
+  engine-1001-peer:
+    build:
+      context: .
+      dockerfile: Dockerfile.4gr
+    container_name: engine-1001
+    ports:
+      - "1001:1001"
+    environment:
+      - ENGINE_ID=1001
+      - ENGINE_PORT=1001
+      - ENGINE_TYPE=peer
+      - LOCK_ID=${LOCK_ID:-unset}
+      - LOCK_INCEPTION=${LOCK_INCEPTION:-unset}
+      - LOCK_EXPIRY=${LOCK_EXPIRY:-unset}
+      - LOCK_ROOT_HASH=${LOCK_ROOT_HASH:-unset}
+      - LOCK_PHRASE=${LOCK_PHRASE:-unset}
+      - WOBBLE_SUU=${WOBBLE_SUU:-0.05}
+      - WOBBLE_AHA=${WOBBLE_AHA:-0.075}
+      - WOBBLE_RERE=${WOBBLE_RERE:-0.15}
+      - ENFORCE_LOCK=true
+    volumes:
+      - ./logs/engine-1001:/app/logs
+      - ./lock-metadata.json:/app/lock-metadata.json:ro
+    healthcheck:
+      test: ["CMD", "sh", "/app/health.sh"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 512M
+        reservations:
+          cpus: "0.3"
+          memory: 256M
+    labels:
+      engine: "peer"
+      lock: "90day-sync"
+      te-papa-matihiko: "true"
+
+  engine-1002-peer:
+    build:
+      context: .
+      dockerfile: Dockerfile.4gr
+    container_name: engine-1002
+    ports:
+      - "1002:1002"
+    environment:
+      - ENGINE_ID=1002
+      - ENGINE_PORT=1002
+      - ENGINE_TYPE=peer
+      - LOCK_ID=${LOCK_ID:-unset}
+      - LOCK_INCEPTION=${LOCK_INCEPTION:-unset}
+      - LOCK_EXPIRY=${LOCK_EXPIRY:-unset}
+      - LOCK_ROOT_HASH=${LOCK_ROOT_HASH:-unset}
+      - LOCK_PHRASE=${LOCK_PHRASE:-unset}
+      - WOBBLE_SUU=${WOBBLE_SUU:-0.05}
+      - WOBBLE_AHA=${WOBBLE_AHA:-0.075}
+      - WOBBLE_RERE=${WOBBLE_RERE:-0.15}
+      - ENFORCE_LOCK=true
+    volumes:
+      - ./logs/engine-1002:/app/logs
+      - ./lock-metadata.json:/app/lock-metadata.json:ro
+    healthcheck:
+      test: ["CMD", "sh", "/app/health.sh"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 512M
+        reservations:
+          cpus: "0.3"
+          memory: 256M
+    labels:
+      engine: "peer"
+      lock: "90day-sync"
+      te-papa-matihiko: "true"
+
+  engine-1003-peer:
+    build:
+      context: .
+      dockerfile: Dockerfile.4gr
+    container_name: engine-1003
+    ports:
+      - "1003:1003"
+    environment:
+      - ENGINE_ID=1003
+      - ENGINE_PORT=1003
+      - ENGINE_TYPE=peer
+      - LOCK_ID=${LOCK_ID:-unset}
+      - LOCK_INCEPTION=${LOCK_INCEPTION:-unset}
+      - LOCK_EXPIRY=${LOCK_EXPIRY:-unset}
+      - LOCK_ROOT_HASH=${LOCK_ROOT_HASH:-unset}
+      - LOCK_PHRASE=${LOCK_PHRASE:-unset}
+      - WOBBLE_SUU=${WOBBLE_SUU:-0.05}
+      - WOBBLE_AHA=${WOBBLE_AHA:-0.075}
+      - WOBBLE_RERE=${WOBBLE_RERE:-0.15}
+      - ENFORCE_LOCK=true
+    volumes:
+      - ./logs/engine-1003:/app/logs
+      - ./lock-metadata.json:/app/lock-metadata.json:ro
+    healthcheck:
+      test: ["CMD", "sh", "/app/health.sh"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 512M
+        reservations:
+          cpus: "0.3"
+          memory: 256M
+    labels:
+      engine: "peer"
+      lock: "90day-sync"
+      te-papa-matihiko: "true"
+
+  engine-1004-peer:
+    build:
+      context: .
+      dockerfile: Dockerfile.4gr
+    container_name: engine-1004
+    ports:
+      - "1004:1004"
+    environment:
+      - ENGINE_ID=1004
+      - ENGINE_PORT=1004
+      - ENGINE_TYPE=peer
+      - LOCK_ID=${LOCK_ID:-unset}
+      - LOCK_INCEPTION=${LOCK_INCEPTION:-unset}
+      - LOCK_EXPIRY=${LOCK_EXPIRY:-unset}
+      - LOCK_ROOT_HASH=${LOCK_ROOT_HASH:-unset}
+      - LOCK_PHRASE=${LOCK_PHRASE:-unset}
+      - WOBBLE_SUU=${WOBBLE_SUU:-0.05}
+      - WOBBLE_AHA=${WOBBLE_AHA:-0.075}
+      - WOBBLE_RERE=${WOBBLE_RERE:-0.15}
+      - ENFORCE_LOCK=true
+    volumes:
+      - ./logs/engine-1004:/app/logs
+      - ./lock-metadata.json:/app/lock-metadata.json:ro
+    healthcheck:
+      test: ["CMD", "sh", "/app/health.sh"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 512M
+        reservations:
+          cpus: "0.3"
+          memory: 256M
+    labels:
+      engine: "peer"
+      lock: "90day-sync"
+      te-papa-matihiko: "true"
+
+  engine-1005-peer:
+    build:
+      context: .
+      dockerfile: Dockerfile.4gr
+    container_name: engine-1005
+    ports:
+      - "1005:1005"
+    environment:
+      - ENGINE_ID=1005
+      - ENGINE_PORT=1005
+      - ENGINE_TYPE=peer
+      - LOCK_ID=${LOCK_ID:-unset}
+      - LOCK_INCEPTION=${LOCK_INCEPTION:-unset}
+      - LOCK_EXPIRY=${LOCK_EXPIRY:-unset}
+      - LOCK_ROOT_HASH=${LOCK_ROOT_HASH:-unset}
+      - LOCK_PHRASE=${LOCK_PHRASE:-unset}
+      - WOBBLE_SUU=${WOBBLE_SUU:-0.05}
+      - WOBBLE_AHA=${WOBBLE_AHA:-0.075}
+      - WOBBLE_RERE=${WOBBLE_RERE:-0.15}
+      - ENFORCE_LOCK=true
+    volumes:
+      - ./logs/engine-1005:/app/logs
+      - ./lock-metadata.json:/app/lock-metadata.json:ro
+    healthcheck:
+      test: ["CMD", "sh", "/app/health.sh"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 512M
+        reservations:
+          cpus: "0.3"
+          memory: 256M
+    labels:
+      engine: "peer"
+      lock: "90day-sync"
+      te-papa-matihiko: "true"
+
+  engine-1006-peer:
+    build:
+      context: .
+      dockerfile: Dockerfile.4gr
+    container_name: engine-1006
+    ports:
+      - "1006:1006"
+    environment:
+      - ENGINE_ID=1006
+      - ENGINE_PORT=1006
+      - ENGINE_TYPE=peer
+      - LOCK_ID=${LOCK_ID:-unset}
+      - LOCK_INCEPTION=${LOCK_INCEPTION:-unset}
+      - LOCK_EXPIRY=${LOCK_EXPIRY:-unset}
+      - LOCK_ROOT_HASH=${LOCK_ROOT_HASH:-unset}
+      - LOCK_PHRASE=${LOCK_PHRASE:-unset}
+      - WOBBLE_SUU=${WOBBLE_SUU:-0.05}
+      - WOBBLE_AHA=${WOBBLE_AHA:-0.075}
+      - WOBBLE_RERE=${WOBBLE_RERE:-0.15}
+      - ENFORCE_LOCK=true
+    volumes:
+      - ./logs/engine-1006:/app/logs
+      - ./lock-metadata.json:/app/lock-metadata.json:ro
+    healthcheck:
+      test: ["CMD", "sh", "/app/health.sh"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 512M
+        reservations:
+          cpus: "0.3"
+          memory: 256M
+    labels:
+      engine: "peer"
+      lock: "90day-sync"
+      te-papa-matihiko: "true"
+
+  engine-1007-peer:
+    build:
+      context: .
+      dockerfile: Dockerfile.4gr
+    container_name: engine-1007
+    ports:
+      - "1007:1007"
+    environment:
+      - ENGINE_ID=1007
+      - ENGINE_PORT=1007
+      - ENGINE_TYPE=peer
+      - LOCK_ID=${LOCK_ID:-unset}
+      - LOCK_INCEPTION=${LOCK_INCEPTION:-unset}
+      - LOCK_EXPIRY=${LOCK_EXPIRY:-unset}
+      - LOCK_ROOT_HASH=${LOCK_ROOT_HASH:-unset}
+      - LOCK_PHRASE=${LOCK_PHRASE:-unset}
+      - WOBBLE_SUU=${WOBBLE_SUU:-0.05}
+      - WOBBLE_AHA=${WOBBLE_AHA:-0.075}
+      - WOBBLE_RERE=${WOBBLE_RERE:-0.15}
+      - ENFORCE_LOCK=true
+    volumes:
+      - ./logs/engine-1007:/app/logs
+      - ./lock-metadata.json:/app/lock-metadata.json:ro
+    healthcheck:
+      test: ["CMD", "sh", "/app/health.sh"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 512M
+        reservations:
+          cpus: "0.3"
+          memory: 256M
+    labels:
+      engine: "peer"
+      lock: "90day-sync"
+      te-papa-matihiko: "true"
+
+  engine-1008-peer:
+    build:
+      context: .
+      dockerfile: Dockerfile.4gr
+    container_name: engine-1008
+    ports:
+      - "1008:1008"
+    environment:
+      - ENGINE_ID=1008
+      - ENGINE_PORT=1008
+      - ENGINE_TYPE=peer
+      - LOCK_ID=${LOCK_ID:-unset}
+      - LOCK_INCEPTION=${LOCK_INCEPTION:-unset}
+      - LOCK_EXPIRY=${LOCK_EXPIRY:-unset}
+      - LOCK_ROOT_HASH=${LOCK_ROOT_HASH:-unset}
+      - LOCK_PHRASE=${LOCK_PHRASE:-unset}
+      - WOBBLE_SUU=${WOBBLE_SUU:-0.05}
+      - WOBBLE_AHA=${WOBBLE_AHA:-0.075}
+      - WOBBLE_RERE=${WOBBLE_RERE:-0.15}
+      - ENFORCE_LOCK=true
+    volumes:
+      - ./logs/engine-1008:/app/logs
+      - ./lock-metadata.json:/app/lock-metadata.json:ro
+    healthcheck:
+      test: ["CMD", "sh", "/app/health.sh"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 512M
+        reservations:
+          cpus: "0.3"
+          memory: 256M
+    labels:
+      engine: "peer"
+      lock: "90day-sync"
+      te-papa-matihiko: "true"
+
+  engine-1009-peer:
+    build:
+      context: .
+      dockerfile: Dockerfile.4gr
+    container_name: engine-1009
+    ports:
+      - "1009:1009"
+    environment:
+      - ENGINE_ID=1009
+      - ENGINE_PORT=1009
+      - ENGINE_TYPE=peer
+      - LOCK_ID=${LOCK_ID:-unset}
+      - LOCK_INCEPTION=${LOCK_INCEPTION:-unset}
+      - LOCK_EXPIRY=${LOCK_EXPIRY:-unset}
+      - LOCK_ROOT_HASH=${LOCK_ROOT_HASH:-unset}
+      - LOCK_PHRASE=${LOCK_PHRASE:-unset}
+      - WOBBLE_SUU=${WOBBLE_SUU:-0.05}
+      - WOBBLE_AHA=${WOBBLE_AHA:-0.075}
+      - WOBBLE_RERE=${WOBBLE_RERE:-0.15}
+      - ENFORCE_LOCK=true
+    volumes:
+      - ./logs/engine-1009:/app/logs
+      - ./lock-metadata.json:/app/lock-metadata.json:ro
+    healthcheck:
+      test: ["CMD", "sh", "/app/health.sh"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 512M
+        reservations:
+          cpus: "0.3"
+          memory: 256M
+    labels:
+      engine: "peer"
+      lock: "90day-sync"
+      te-papa-matihiko: "true"
+
+  engine-1010-peer:
+    build:
+      context: .
+      dockerfile: Dockerfile.4gr
+    container_name: engine-1010
+    ports:
+      - "1010:1010"
+    environment:
+      - ENGINE_ID=1010
+      - ENGINE_PORT=1010
+      - ENGINE_TYPE=peer
+      - LOCK_ID=${LOCK_ID:-unset}
+      - LOCK_INCEPTION=${LOCK_INCEPTION:-unset}
+      - LOCK_EXPIRY=${LOCK_EXPIRY:-unset}
+      - LOCK_ROOT_HASH=${LOCK_ROOT_HASH:-unset}
+      - LOCK_PHRASE=${LOCK_PHRASE:-unset}
+      - WOBBLE_SUU=${WOBBLE_SUU:-0.05}
+      - WOBBLE_AHA=${WOBBLE_AHA:-0.075}
+      - WOBBLE_RERE=${WOBBLE_RERE:-0.15}
+      - ENFORCE_LOCK=true
+    volumes:
+      - ./logs/engine-1010:/app/logs
+      - ./lock-metadata.json:/app/lock-metadata.json:ro
+    healthcheck:
+      test: ["CMD", "sh", "/app/health.sh"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 512M
+        reservations:
+          cpus: "0.3"
+          memory: 256M
+    labels:
+      engine: "peer"
+      lock: "90day-sync"
+      te-papa-matihiko: "true"
+
+  engine-1011-peer:
+    build:
+      context: .
+      dockerfile: Dockerfile.4gr
+    container_name: engine-1011
+    ports:
+      - "1011:1011"
+    environment:
+      - ENGINE_ID=1011
+      - ENGINE_PORT=1011
+      - ENGINE_TYPE=peer
+      - LOCK_ID=${LOCK_ID:-unset}
+      - LOCK_INCEPTION=${LOCK_INCEPTION:-unset}
+      - LOCK_EXPIRY=${LOCK_EXPIRY:-unset}
+      - LOCK_ROOT_HASH=${LOCK_ROOT_HASH:-unset}
+      - LOCK_PHRASE=${LOCK_PHRASE:-unset}
+      - WOBBLE_SUU=${WOBBLE_SUU:-0.05}
+      - WOBBLE_AHA=${WOBBLE_AHA:-0.075}
+      - WOBBLE_RERE=${WOBBLE_RERE:-0.15}
+      - ENFORCE_LOCK=true
+    volumes:
+      - ./logs/engine-1011:/app/logs
+      - ./lock-metadata.json:/app/lock-metadata.json:ro
+    healthcheck:
+      test: ["CMD", "sh", "/app/health.sh"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 512M
+        reservations:
+          cpus: "0.3"
+          memory: 256M
+    labels:
+      engine: "peer"
+      lock: "90day-sync"
+      te-papa-matihiko: "true"
+
+  engine-1012-peer:
+    build:
+      context: .
+      dockerfile: Dockerfile.4gr
+    container_name: engine-1012
+    ports:
+      - "1012:1012"
+    environment:
+      - ENGINE_ID=1012
+      - ENGINE_PORT=1012
+      - ENGINE_TYPE=peer
+      - LOCK_ID=${LOCK_ID:-unset}
+      - LOCK_INCEPTION=${LOCK_INCEPTION:-unset}
+      - LOCK_EXPIRY=${LOCK_EXPIRY:-unset}
+      - LOCK_ROOT_HASH=${LOCK_ROOT_HASH:-unset}
+      - LOCK_PHRASE=${LOCK_PHRASE:-unset}
+      - WOBBLE_SUU=${WOBBLE_SUU:-0.05}
+      - WOBBLE_AHA=${WOBBLE_AHA:-0.075}
+      - WOBBLE_RERE=${WOBBLE_RERE:-0.15}
+      - ENFORCE_LOCK=true
+    volumes:
+      - ./logs/engine-1012:/app/logs
+      - ./lock-metadata.json:/app/lock-metadata.json:ro
+    healthcheck:
+      test: ["CMD", "sh", "/app/health.sh"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 512M
+        reservations:
+          cpus: "0.3"
+          memory: 256M
+    labels:
+      engine: "peer"
+      lock: "90day-sync"
+      te-papa-matihiko: "true"
+
+networks:
+  default:
+    name: te-papa-matihiko-network
+    labels:
+      lock: "90day-sync"

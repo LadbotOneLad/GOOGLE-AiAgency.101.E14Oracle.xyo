@@ -1,0 +1,27 @@
+docker exec engine-365-days wc -l /logs/cycles.log
+docker exec ultimate-engine wc -l /logs/ultimate_sovereign_audit.jsonl
+docker exec tenetaiagency-101 wc -l /logs/audit.log
+
+
+docker stats engine-365-days ultimate-engine tenetaiagency-101
+
+
+
+docker exec engine-365-days tail -5 /logs/cycles.log
+docker exec tenetaiagency-101 tail -5 /logs/audit.log-101 cat /logs/metrics.json
+
+
+
+
+docker exec engine-365-days cat /logs/metrics.json
+docker exec ultimate-engine cat /logs/ultimate_sovereign_metrics.json
+docker exec tenetaiagency
+
+
+
+docker logs engine-365-days --tail 10
+docker logs ultimate-engine --tail 10
+docker logs tenetaiagency-101 --tail 10
+
+
+docker stats --no-stream engine-365-days ultimate-engine tenetaiagency-101

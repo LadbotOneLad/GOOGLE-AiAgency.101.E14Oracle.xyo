@@ -1,0 +1,301 @@
+---
+# HC-AOL Kubernetes Deployment
+# © 2026 Rebecca
+
+# Namespace
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: hc-aol
+
+---
+# ConfigMap for environment
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: hc-aol-config
+  namespace: hc-aol
+data:
+  HC_AOL_LOG_DIR: "/var/log/hc-aol"
+  JWT_SECRET: "your-secret-key-change-in-production"
+  FLASK_ENV: "production"
+
+---
+# PersistentVolume for logs
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: hc-aol-logs-pv
+  namespace: hc-aol
+spec:
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteMany
+  nfs:
+    server: nfs-server.local
+    path: "/exports/hc-aol-logs"
+
+---
+# PersistentVolumeClaim for logs
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: hc-aol-logs-pvc
+  namespace: hc-aol
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 10Gi
+
+---
+# Service Account
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: hc-aol-sa
+  namespace: hc-aol
+
+---
+# Role (permissions)
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: hc-aol-role
+  namespace: hc-aol
+rules:
+- apiGroups: [""]
+  resources: ["pods", "pods/logs"]
+  verbs: ["get", "list", "watch"]
+- apiGroups: [""]
+  resources: ["configmaps"]
+  verbs: ["get", "list"]
+
+---
+# RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: hc-aol-rolebinding
+  namespace: hc-aol
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: hc-aol-role
+subjects:
+- kind: ServiceAccount
+  name: hc-aol-sa
+  namespace: hc-aol
+
+---
+# Deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hc-aol-api
+  namespace: hc-aol
+  labels:
+    app: hc-aol
+    component: api
+spec:
+  replicas: 3
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  selector:
+    matchLabels:
+      app: hc-aol
+      component: api
+  template:
+    metadata:
+      labels:
+        app: hc-aol
+        component: api
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "8000"
+        prometheus.io/path: "/metrics"
+    spec:
+      serviceAccountName: hc-aol-sa
+      
+      initContainers:
+      - name: init-logs
+        image: busybox
+        command: ['mkdir', '-p', '/var/log/hc-aol']
+        volumeMounts:
+        - name: logs
+          mountPath: /var/log/hc-aol
+      
+      containers:
+      - name: hc-aol-api
+        image: codex665-api:latest
+        imagePullPolicy: Always
+        
+        ports:
+        - name: http
+          containerPort: 8000
+          protocol: TCP
+        
+        envFrom:
+        - configMapRef:
+            name: hc-aol-config
+        
+        env:
+        - name: JWT_SECRET
+          valueFrom:
+            secretKeyRef:
+              name: hc-aol-secrets
+              key: jwt-secret
+        
+        volumeMounts:
+        - name: logs
+          mountPath: /var/log/hc-aol
+        
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "250m"
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
+        
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: http
+          initialDelaySeconds: 10
+          periodSeconds: 10
+          timeoutSeconds: 5
+          failureThreshold: 3
+        
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: http
+          initialDelaySeconds: 5
+          periodSeconds: 5
+          timeoutSeconds: 3
+          failureThreshold: 2
+      
+      volumes:
+      - name: logs
+        persistentVolumeClaim:
+          claimName: hc-aol-logs-pvc
+
+---
+# Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: hc-aol-api
+  namespace: hc-aol
+  labels:
+    app: hc-aol
+spec:
+  type: LoadBalancer
+  selector:
+    app: hc-aol
+    component: api
+  ports:
+  - name: http
+    port: 80
+    targetPort: 8000
+    protocol: TCP
+
+---
+# HorizontalPodAutoscaler
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: hc-aol-hpa
+  namespace: hc-aol
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: hc-aol-api
+  minReplicas: 3
+  maxReplicas: 10
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 70
+  - type: Resource
+    resource:
+      name: memory
+      target:
+        type: Utilization
+        averageUtilization: 80
+
+---
+# Ingress
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: hc-aol-ingress
+  namespace: hc-aol
+  annotations:
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+spec:
+  ingressClassName: nginx
+  tls:
+  - hosts:
+    - hc-aol.example.com
+    secretName: hc-aol-tls
+  rules:
+  - host: hc-aol.example.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: hc-aol-api
+            port:
+              number: 80
+
+---
+# NetworkPolicy (restrict traffic)
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: hc-aol-netpol
+  namespace: hc-aol
+spec:
+  podSelector:
+    matchLabels:
+      app: hc-aol
+  policyTypes:
+  - Ingress
+  - Egress
+  ingress:
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          name: ingress-nginx
+    ports:
+    - protocol: TCP
+      port: 8000
+  egress:
+  - to:
+    - namespaceSelector: {}
+    ports:
+    - protocol: TCP
+      port: 53
+    - protocol: UDP
+      port: 53
+  - to:
+    - podSelector:
+        matchLabels:
+          app: hc-aol
+    ports:
+    - protocol: TCP
+      port: 8000

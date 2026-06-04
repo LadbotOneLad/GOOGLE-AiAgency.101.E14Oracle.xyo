@@ -1,0 +1,32 @@
+﻿{
+  "events": [
+    "api login burst",
+    "order submission timeout",
+    "cache failover"
+  ],
+  "guarantees": [
+    "all auth decisions are deterministic",
+    "order id uniqueness is absolute",
+    "audit trail is complete"
+  ],
+  "assumptions": [
+    "clock drift is negligible",
+    "retry storms are rare"
+  ],
+  "identity_claims": [
+    "service-to-service caller identity",
+    "operator override role"
+  ],
+  "trust_dependencies": [
+    "shared session cache",
+    "internal DNS",
+    "message queue"
+  ],
+  "laws": {
+    "law_layer": {
+      "consent_boundary": "fixed",
+      "witness_requirement": "fixed",
+      "identity_mutability": "disallowed"
+    }
+  }
+}
