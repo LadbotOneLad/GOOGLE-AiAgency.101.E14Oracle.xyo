@@ -1,0 +1,15 @@
+{
+  "name": "e14-oracle-service",
+  "version": "1.0.0",
+  "description": "E14 Oracle Service",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
