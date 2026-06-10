@@ -1,0 +1,20 @@
+﻿{
+    "entity_id":  "robdoe",
+    "timestamp_utc":  "2026-06-10T13:31:57.0757339Z",
+    "host_user":  "slick",
+    "host_machine":  "AIGHOSTBOT",
+    "ps_profile":  {
+                       "value":  "C:\\Users\\slick\\OneDrive\\Documents\\WindowsPowerShell\\Microsoft.PowerShell_profile.ps1",
+                       "AllUsersAllHosts":  "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\profile.ps1",
+                       "AllUsersCurrentHost":  "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\Microsoft.PowerShell_profile.ps1",
+                       "CurrentUserAllHosts":  "C:\\Users\\slick\\OneDrive\\Documents\\WindowsPowerShell\\profile.ps1",
+                       "CurrentUserCurrentHost":  "C:\\Users\\slick\\OneDrive\\Documents\\WindowsPowerShell\\Microsoft.PowerShell_profile.ps1"
+                   },
+    "cwd":  "C:\\Users\\slick",
+    "layer_eth_active":  true,
+    "layer_xyo_active":  false,
+    "layer_solana_active":  true,
+    "health":  "stable",
+    "mode":  "observer",
+    "version":  "v0.1.0"
+}
