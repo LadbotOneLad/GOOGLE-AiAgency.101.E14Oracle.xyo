@@ -1,0 +1,9 @@
+twig:
+  id: twig-atmospheric
+  inherits:
+    - root-authority\lattice\gravity-map.yaml
+    - root-authority\lattice\engine-bindings.yaml
+    - root-authority\lattice\emotion-bindings.yaml
+    - root-authority\lattice\domain-bindings.yaml
+    - root-authority\lattice\mesh-topology.yaml
+  mode: lattice-bound

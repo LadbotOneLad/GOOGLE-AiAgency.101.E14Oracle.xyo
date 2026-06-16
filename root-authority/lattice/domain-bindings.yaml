@@ -1,0 +1,8 @@
+domains:
+  minted: 15
+  binding:
+    inherits:
+      - engines
+      - emotions
+      - gravity
+      - dimensional-stack

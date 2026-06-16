@@ -1,0 +1,26 @@
+{
+    "id":  "root_authority",
+    "type":  "governance",
+    "version":  "1.0.0",
+    "authority":  "E14",
+    "pledge":  "Open, welcoming, harassment-free participation for all contributors.",
+    "standards":  [
+                      "Use welcoming and inclusive language",
+                      "Respect differing viewpoints and experiences",
+                      "Accept constructive criticism gracefully",
+                      "Focus on what is best for the community",
+                      "Show empathy toward other members"
+                  ],
+    "unacceptable":  [
+                         "Sexualized language or imagery",
+                         "Unwelcome sexual attention or advances",
+                         "Trolling or derogatory comments",
+                         "Personal or political attacks",
+                         "Public or private harassment",
+                         "Publishing private information without permission",
+                         "Any behavior inappropriate in a professional setting"
+                     ],
+    "enforcement":  "Maintainers may remove, edit, or reject contributions or ban participants for harmful behavior.",
+    "scope":  "Applies within project spaces and when representing the project publicly.",
+    "state":  "ACTIVE"
+}

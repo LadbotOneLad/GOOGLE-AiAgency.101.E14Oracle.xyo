@@ -1,0 +1,9 @@
+engines:
+  - id: engine-01.gravity-core
+    chakra: 6n+1   - id: engine-02.identity-field
+    chakra: 6n+1   - id: engine-03.contractory-flow
+    chakra: 6n+1   - id: engine-04.resonance-node
+    chakra: 6n+1   - id: engine-05.witness-drive
+    chakra: 6n+1   - id: engine-06.sovereign-anchor
+    chakra: 6n+1   - id: engine-07.invariant-7
+    chakra: 6n+1

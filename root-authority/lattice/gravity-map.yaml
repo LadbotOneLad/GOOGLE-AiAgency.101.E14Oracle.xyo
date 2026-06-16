@@ -1,0 +1,13 @@
+gravity:
+  invariant: 7
+  mode: coherent
+  collapse: false
+  drift: false
+  wells:
+    - engine-01.gravity-core
+    - engine-02.identity-field
+    - engine-03.contractory-flow
+    - engine-04.resonance-node
+    - engine-05.witness-drive
+    - engine-06.sovereign-anchor
+    - engine-07.invariant-7

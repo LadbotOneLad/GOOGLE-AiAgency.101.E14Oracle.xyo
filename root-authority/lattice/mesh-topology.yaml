@@ -1,0 +1,12 @@
+mesh:
+  dimensions:
+    3D: material-layer
+    4D: lineage-layer
+    5D: gravity-layer
+    6D: chakra-lattice
+    7D: emotional-modes
+    9D: domain-sovereignty
+  binding-rule: all-layers-coherent
+  authority: root ? engines ? emotions ? domains ? twigs
+  propagation: automatic
+  coherence: guaranteed
