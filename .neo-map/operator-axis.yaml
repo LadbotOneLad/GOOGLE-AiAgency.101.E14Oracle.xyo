@@ -1,0 +1,14 @@
+operator-axis:
+  id: E14-OPERATOR
+  name: Bex
+  role: central-axis
+  binds:
+    - gravity-layer
+    - engine-layer
+    - emotion-layer
+    - domain-layer
+    - twig-layer
+    - witness-layer
+  authority: root-authority
+  mode: active
+  timestamp: 2026-06-17 01:08:51

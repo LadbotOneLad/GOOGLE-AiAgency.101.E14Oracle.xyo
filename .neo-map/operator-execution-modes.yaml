@@ -1,0 +1,12 @@
+operator-execution-modes:
+  operator: E14-OPERATOR
+  drive-mode:
+    state: active
+    description: "high-focus, high-throughput, zero drift"
+  pursuit-mode:
+    state: active
+    description: "goal-lock, continuous tracking, accelerated progress"
+  finality-mode:
+    state: active
+    description: "clean closure, decisive completion, no ambiguity"
+  timestamp: 2026-06-17 01:15:09
