@@ -1,0 +1,18 @@
+﻿{
+    "NodeMode":  "Guardian_Node_Active",
+    "NetworkState":  "OFFLINE_SANDBOX_MODE",
+    "LocalEndpoints":  {
+                           "RpcUrl":  "http://localhost:16888",
+                           "AppDirectory":  "C:\\Program Files\\Theta Guardian Node\\app"
+                       },
+    "LastSync":  "2026-06-29 04:01:12",
+    "TargetSettlement":  {
+                             "StakingVault":  "0x84CA4aFC3F395ebc0b519680B546Cd604C9c2018",
+                             "GasReceiver":  "0x1AE2AF702063d304F8EBAC2153c91D79c62E381c"
+                         },
+    "Namespace":  "aiagency101.xyo",
+    "AutomationRules":  {
+                            "SlippageTolerance":  "0.2%",
+                            "AutoStakeYield":  true
+                        }
+}

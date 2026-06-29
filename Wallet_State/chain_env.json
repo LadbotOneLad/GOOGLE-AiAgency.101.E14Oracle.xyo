@@ -1,0 +1,28 @@
+﻿{
+    "NetworkTopography":  [
+                              {
+                                  "C":  "0x319e6...57f26",
+                                  "U":  "https://xyo.network",
+                                  "N":  "XL1_M"
+                              },
+                              {
+                                  "C":  "0x4b43a...624bc",
+                                  "U":  "https://xyo.network",
+                                  "N":  "XL1_B"
+                              },
+                              {
+                                  "C":  "N/A",
+                                  "U":  "http://localhost:8080",
+                                  "N":  "XL1_L"
+                              }
+                          ],
+    "VaultRegistry":  {
+                          "L":  "0x1AE2AF702063d304F8EBAC2153c91D79c62E381c",
+                          "S":  "0x13e3468b1cfb3d45c116341f28ec4714333d7bbc",
+                          "P":  "0x84CA4aFC3F395ebc0b519680B546Cd604C9c2018",
+                          "B":  "0xabf4e0A237E4632b1740fdBe118162aA33b4F5aD"
+                      },
+    "Namespace":  "aiagency101.xyo",
+    "ActiveKeystoreFile":  "C:\\AiAgency101\\Wallet_State\\Secure_Vaults\\keystore_13e3.json",
+    "LastModified":  "2026-06-29 04:23:50"
+}

@@ -1,6 +1,5 @@
 ﻿Wallet_State/Secure_Vaults/*
 Wallet_State/outbound_tx_queue.json
 Revenue_Logs/*
-.history/
 *.vhdx
 *.log
