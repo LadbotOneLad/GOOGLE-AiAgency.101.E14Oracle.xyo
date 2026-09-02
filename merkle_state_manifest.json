@@ -1,0 +1,17 @@
+{
+    "BudapestStateHash":  "adccf0609deb261f3696bf51871b80073c5665a5db752c1c0ad1d8426c796f8330ea56751a53a4930937c0660e8def756a26aa103f0574d5a383cf517eafbcfaae1ee08b9af4e917e6589159da064d3720f7d1185a421ce53fd2ce5c4c368ba021c2b5c80279ec17a7bb38bbf731c2ec7c584428de3112fc8523c1905399ded1",
+    "Timestamp_UTC":  "2026-08-30T11:59:51.2355874Z",
+    "BudapestLatticeRoot1024Hex":  "0debbb2abb5c3c75f308462626496b34da590c3c9e376459da59d4fd00d9801c03f4555c6c156b92c278a018c7bf15bca6413c1ca61179e5de06bf97e8e49dffb0df62f2ccc02f83b986ec4718d9b9e7a1897b2e7618bde8709ec01a738669e905a1bca8f43358b78ba022f9426571e504c462438cdb269f811af2b2ac54c2b2",
+    "BudapestArticles":  {
+                             "Art_16_Data_Preservation":  "ACTIVE",
+                             "Art_17_Partial_Data_Preservation":  "ACTIVE",
+                             "Art_18_Production_Order":  "ACTIVE",
+                             "Art_19_Search_Seizure_Stored_Data":  "ACTIVE",
+                             "Art_20_Realtime_Collection_Data":  "ACTIVE",
+                             "Art_21_Interception_Content_Data":  "ACTIVE",
+                             "Art_22_Jurisdiction_Framework":  "BOUND_LATTICE"
+                         },
+    "Model":  "BUDAPEST_CONVENTION_CYBERCRIME_LATTICE_1024",
+    "HexLength":  256,
+    "BitDepth":  1024
+}
