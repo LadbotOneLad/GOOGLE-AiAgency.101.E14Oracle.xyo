@@ -8,5 +8,7 @@
     "TimestampUtc":  "2026-09-04T08:49:58.125634Z",
     "Status":  "CHROMATIC_CORE_LOCKED",
     "LastContinuationUtc":  "2026-09-04T10:03:25.203814Z",
-    "ContinuationTag":  "nexus-loop-20260904-200325"
+    "ContinuationTag":  "nexus-loop-20260904-200325",
+    "DoctrineLockedUtc":  "2026-09-04T10:59:20.422292Z",
+    "DoctrineTag":  "doctrine-72-apex-20260904-205920"
 }
