@@ -34,5 +34,7 @@
     "PatchedMathLockedUtc":  "2026-09-04T13:21:09.671031Z",
     "PatchedMathTag":  "explicit-math-patched-20260904-232109",
     "ObfuscationLockedUtc":  "2026-09-04T13:28:46.067973Z",
-    "ObfuscationTag":  "net-obfuscation-lock-20260904-232846"
+    "ObfuscationTag":  "net-obfuscation-lock-20260904-232846",
+    "GlobalBroadcastUtc":  "2026-09-04T13:36:33.701871Z",
+    "GlobalBroadcastTag":  "global-proof-broadcast-20260904-233633"
 }
