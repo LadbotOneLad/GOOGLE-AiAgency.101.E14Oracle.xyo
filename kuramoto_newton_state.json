@@ -1,11 +1,10 @@
 ﻿{
-    "Engine":  "Kuramoto-Newton-Mandelbrot Z-Field Kernel 🌀",
+    "Engine":  "Kuramoto-Newton-Mandelbrot Sovereign Core v12.0.1",
     "Operator":  "LadbotOneLad",
     "HardwareTarget":  "COM7",
     "HardwareStatus":  "BOUND_ACTIVE_CH340",
-    "ComplexParamC":  "(-0.7269, 0.1889)",
     "FinalZValue":  "(-0.643838719581654, 0.281935427994208)",
     "SystemMagnitude":  0.92577414757586229,
-    "GlobalHash":  "KyaCJsRfB7iMP6+p3fmtbOyYH+BJyBfJVhY5P59hIFU=",
-    "Timestamp":  "2026-09-04T07:56:16.165168Z"
+    "GlobalHash":  "8O5z8VIrSjEeQTOcSrBTBfXgqrFWzw/CWW39krE9osM=",
+    "Timestamp":  "2026-09-04T08:01:55.100261Z"
 }

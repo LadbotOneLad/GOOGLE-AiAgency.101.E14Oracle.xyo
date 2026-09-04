@@ -1,0 +1,11 @@
+﻿{
+    "WitnessPhase":  "AFTER",
+    "BinaryVector":  "1/0",
+    "Operator":  "LadbotOneLad",
+    "HardwareTarget":  "COM7",
+    "EpochTimestamp":  1788508915,
+    "UtcTimestamp":  "2026-09-04T08:01:55.753082Z",
+    "Status":  "APEX_STATE_SEALED",
+    "PairedBeforeTag":  "hardhat-0-1-20260904-180155",
+    "SystemHash":  "8O5z8VIrSjEeQTOcSrBTBfXgqrFWzw/CWW39krE9osM="
+}
