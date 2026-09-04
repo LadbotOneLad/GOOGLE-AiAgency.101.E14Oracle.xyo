@@ -20,5 +20,7 @@
     "DeepSeekIntegrationUtc":  "2026-09-04T12:40:30.039915Z",
     "DeepSeekTag":  "deepseek-nv3-bridge-20260904-224030",
     "DoctrineAddonLockedUtc":  "2026-09-04T13:06:38.387488Z",
-    "DoctrineAddonTag":  "infra-doctrine-addon-20260904-230638"
+    "DoctrineAddonTag":  "infra-doctrine-addon-20260904-230638",
+    "BenchmarkLockedUtc":  "2026-09-04T13:08:00.175356Z",
+    "BenchmarkTag":  "live-ai-benchmark-20260904-230800"
 }
