@@ -1,11 +1,10 @@
 ﻿{
-    "Engine":  "RobdoeHardHat Direct Push Lattice",
+    "Engine":  "Global Chromatic Firewall v1.6.0 \u0026 Hardhat Sync",
     "Operator":  "LadbotOneLad",
     "Company":  "Robdoe Pty Ltd",
-    "TargetRepo":  "https://github.com/LadbotOneLad/robdoeHardHat.git",
     "ActiveBranch":  "master",
     "IdentityEntities":  "THE EMU \u0026 THE KANGAROO [FORWARD ONLY]",
     "ComplianceStandard":  "Evidence Act 1995 (Cth) s146 Device Output Presumption",
-    "TimestampUtc":  "2026-09-04T08:42:55.738075Z",
-    "Status":  "DIRECT_PUSH_LOCKED"
+    "TimestampUtc":  "2026-09-04T08:49:58.125634Z",
+    "Status":  "CHROMATIC_CORE_LOCKED"
 }
