@@ -22,5 +22,7 @@
     "DoctrineAddonLockedUtc":  "2026-09-04T13:06:38.387488Z",
     "DoctrineAddonTag":  "infra-doctrine-addon-20260904-230638",
     "BenchmarkLockedUtc":  "2026-09-04T13:08:00.175356Z",
-    "BenchmarkTag":  "live-ai-benchmark-20260904-230800"
+    "BenchmarkTag":  "live-ai-benchmark-20260904-230800",
+    "AndroerLockedUtc":  "2026-09-04T13:09:36.610253Z",
+    "AndroerTag":  "androer-root-e14-20260904-230936"
 }
