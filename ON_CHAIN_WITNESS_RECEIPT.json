@@ -1,0 +1,10 @@
+﻿{
+    "Engine":  "CrewAI Hardhat Sovereign Orchestration Lattice",
+    "Operator":  "LadbotOneLad",
+    "Company":  "Robdoe Pty Ltd",
+    "HardwareTarget":  "COM7",
+    "IdentityEntities":  "THE EMU \u0026 THE KANGAROO [FORWARD ONLY]",
+    "ComplianceStandard":  "Evidence Act 1995 (Cth) s146 Device Output Presumption",
+    "TimestampUtc":  "2026-09-04T08:34:26.951044Z",
+    "Status":  "CREW_PIPELINE_SEALED"
+}
