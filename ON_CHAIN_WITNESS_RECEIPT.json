@@ -10,5 +10,7 @@
     "LastContinuationUtc":  "2026-09-04T10:03:25.203814Z",
     "ContinuationTag":  "nexus-loop-20260904-200325",
     "DoctrineLockedUtc":  "2026-09-04T10:59:20.422292Z",
-    "DoctrineTag":  "doctrine-72-apex-20260904-205920"
+    "DoctrineTag":  "doctrine-72-apex-20260904-205920",
+    "SystemDoctrineLockedUtc":  "2026-09-04T11:19:41.589853Z",
+    "SystemDoctrineTag":  "system-doctrine-72-20260904-211941"
 }
