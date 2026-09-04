@@ -1,0 +1,9 @@
+﻿{
+    "WitnessPhase":  "BEFORE",
+    "BinaryVector":  "0/1",
+    "Operator":  "LadbotOneLad",
+    "HardwareTarget":  "COM7",
+    "EpochTimestamp":  1788508915,
+    "UtcTimestamp":  "2026-09-04T08:01:55.100261Z",
+    "Status":  "GROUND_STATE_LOCKED"
+}
