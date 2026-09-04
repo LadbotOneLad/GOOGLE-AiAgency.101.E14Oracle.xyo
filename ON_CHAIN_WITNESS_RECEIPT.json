@@ -24,5 +24,7 @@
     "BenchmarkLockedUtc":  "2026-09-04T13:08:00.175356Z",
     "BenchmarkTag":  "live-ai-benchmark-20260904-230800",
     "AndroerLockedUtc":  "2026-09-04T13:09:36.610253Z",
-    "AndroerTag":  "androer-root-e14-20260904-230936"
+    "AndroerTag":  "androer-root-e14-20260904-230936",
+    "SpaceLockedUtc":  "2026-09-04T13:12:22.524871Z",
+    "SpaceTag":  "space-horizon-20260904-231222"
 }
