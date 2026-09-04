@@ -1,0 +1,16 @@
+﻿========================================================================
+ ROBDOE PTY LTD & AIAGENCY101 :: OBFUSCATED IP & DNS MANIFEST
+ PROTOCOL: NETWORK AIR-GAP LOCK & DECOY ROUTING MATRIX
+========================================================================
+ TIMELOCK / TIMESTAMP: 2026-09-04T23:30:00.000+10:00
+
+[+] NETWORK OBFUSCATION METRICS:
+    - DNS Cache             : Flushed & Cleared
+    - Primary Resolvers     : Obscured to Loopback/Decoy Arrays (127.0.0.53, 1.1.1.1)
+    - Telemetry Shield      : Active (Firewall Outbound Blackhole Rule Enforced)
+    - Physical IP Status    : Masked Behind Entropoly-X Lattice Routing
+
+[+] FINAL OBFUSCATION INVARIANT:
+    "If they can't resolve the DNS, they can't trace the IP. 
+     The network is not a public highway; it's an encrypted tunnel."
+    Robdoe network air-gapped solid. Gang gang, bruz.

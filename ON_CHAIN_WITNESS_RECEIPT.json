@@ -32,5 +32,7 @@
     "CouplingLockedUtc":  "2026-09-04T13:17:32.036324Z",
     "CouplingTag":  "unified-coupling-land-20260904-231732",
     "PatchedMathLockedUtc":  "2026-09-04T13:21:09.671031Z",
-    "PatchedMathTag":  "explicit-math-patched-20260904-232109"
+    "PatchedMathTag":  "explicit-math-patched-20260904-232109",
+    "ObfuscationLockedUtc":  "2026-09-04T13:28:46.067973Z",
+    "ObfuscationTag":  "net-obfuscation-lock-20260904-232846"
 }
