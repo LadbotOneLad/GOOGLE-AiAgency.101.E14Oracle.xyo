@@ -1,0 +1,12 @@
+﻿# ==============================================================================
+# CREWAI MULTI-AGENT ORCHESTRATION MANIFEST // GANG GANG
+# ==============================================================================
+crewai:
+  version: "latest"
+  engine: "RobdoeStateMachines"
+  agents:
+    - role: "Hardware Interfacer"
+      goal: "Maintain direct COM7 CH340 register synchronization."
+    - role: "Math Lattice Auditor"
+      goal: "Enforce 25920 + 80yr precession cadence."
+  action: "Autonomous execution, zero lag, direct upstream push."
