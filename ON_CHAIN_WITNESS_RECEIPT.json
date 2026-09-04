@@ -30,5 +30,7 @@
     "MathLockedUtc":  "2026-09-04T13:15:14.977007Z",
     "MathTag":  "math-truth-invariant-20260904-231514",
     "CouplingLockedUtc":  "2026-09-04T13:17:32.036324Z",
-    "CouplingTag":  "unified-coupling-land-20260904-231732"
+    "CouplingTag":  "unified-coupling-land-20260904-231732",
+    "PatchedMathLockedUtc":  "2026-09-04T13:21:09.671031Z",
+    "PatchedMathTag":  "explicit-math-patched-20260904-232109"
 }
