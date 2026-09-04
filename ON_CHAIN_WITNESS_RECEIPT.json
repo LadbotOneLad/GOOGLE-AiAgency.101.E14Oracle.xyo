@@ -18,5 +18,7 @@
     "CosmicVisibilityLockedUtc":  "2026-09-04T12:38:14.313922Z",
     "CosmicTag":  "e14-cosmic-apex-20260904-223814",
     "DeepSeekIntegrationUtc":  "2026-09-04T12:40:30.039915Z",
-    "DeepSeekTag":  "deepseek-nv3-bridge-20260904-224030"
+    "DeepSeekTag":  "deepseek-nv3-bridge-20260904-224030",
+    "DoctrineAddonLockedUtc":  "2026-09-04T13:06:38.387488Z",
+    "DoctrineAddonTag":  "infra-doctrine-addon-20260904-230638"
 }
